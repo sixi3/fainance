@@ -3,6 +3,7 @@ export const COLORS = {
   // Primary colors
   background: '#090A09',
   surface: '#141C18',
+  surfaceSecondary: '#1D201F',
   surfaceGradient: {
     from: '#232523',
     to: '#1A1E1C',
@@ -31,7 +32,7 @@ export const COLORS = {
   // Text colors
   textPrimary: '#FFFFFF',
   textSecondary: '#E3FFBB',
-  textTertiary: '#9AABA0',
+  textTertiary: '#3D4C45',
   
   // Assistant colors
   assistantGradient: {

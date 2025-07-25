@@ -59,7 +59,7 @@ const HomeScreen = () => {
           </View>
 
           {/* Bank Balance Section */}
-          <View style={styles.section}>
+          <View style={[styles.section, styles.sectionWithPadding]}>
             <BankBalanceSection
               onBalanceToggle={handleBalanceToggle}
               onBankPress={handleBankPress}
@@ -67,7 +67,7 @@ const HomeScreen = () => {
           </View>
 
           {/* Placeholder for Investment Section */}
-          <View style={styles.section}>
+          <View style={[styles.section, styles.sectionWithPadding]}>
             <View style={styles.placeholderCard}>
               <View style={styles.placeholderContent}>
                 <View style={styles.placeholderTitle}>
@@ -83,7 +83,7 @@ const HomeScreen = () => {
           </View>
 
           {/* Placeholder for Voice Assistant */}
-          <View style={styles.section}>
+          <View style={[styles.section, styles.sectionWithPadding]}>
             <View style={styles.assistantPlaceholder}>
               <View style={styles.assistantContent}>
                 <View style={styles.assistantIcon} />
@@ -115,13 +115,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingHorizontal: SPACING.sm,
     paddingTop: SPACING.xxs, // Reduced from lg to xs
     paddingBottom: SPACING.lg, // Reduced from 4xl to lg
     gap: SPACING.xs, // Reduced from sm to xs
   },
   section: {
     width: '100%',
+  },
+  sectionWithPadding: {
+    paddingHorizontal: SPACING.sm,
   },
   placeholderCard: {
     backgroundColor: COLORS.surface,
