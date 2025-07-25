@@ -1,0 +1,3605 @@
+{
+  "metadata": {
+    "name": "Untitled",
+    "lastModified": "2025-07-25T05:00:14Z",
+    "thumbnailUrl": "https://s3-alpha.figma.com/thumbnails/89e45b6a-71f1-4393-95c8-9668a64eceba?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQ4GOSFWC3X5W3ZQB%2F20250724%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20250724T000000Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=91a4c2a55fb0029bb628202353766b7ed05ddf5ad04e5436e186ed70cb83fff4",
+    "components": {
+      "8:67": {
+        "id": "8:67",
+        "key": "7ad82aa05b52bc5f4bbc9d9a931fbd3290d662e1",
+        "name": "BoB"
+      },
+      "8:95": {
+        "id": "8:95",
+        "key": "c2fb6230ca7dbd9380b566eb51a851549de5100f",
+        "name": "KOTAK"
+      }
+    }
+  },
+  "nodes": [
+    {
+      "id": "111:1557",
+      "name": "iPhone 16 - 4",
+      "type": "FRAME",
+      "boundingBox": {
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 852
+      },
+      "fills": "fill_Q66GAP",
+      "layout": "layout_MXS74T",
+      "borderRadius": "52px",
+      "children": [
+        {
+          "id": "111:2019",
+          "name": "Ellipse 7",
+          "type": "ELLIPSE",
+          "boundingBox": {
+            "x": -72,
+            "y": 770,
+            "width": 539,
+            "height": 538
+          },
+          "fills": "fill_AEEDL0",
+          "effects": "effect_K2Q4TM",
+          "layout": "layout_CEFG5K",
+          "opacity": 0
+        },
+        {
+          "id": "111:2020",
+          "name": "Ellipse 8",
+          "type": "ELLIPSE",
+          "boundingBox": {
+            "x": -341,
+            "y": 836,
+            "width": 538,
+            "height": 538
+          },
+          "fills": "fill_OJD5IH",
+          "effects": "effect_K2Q4TM",
+          "layout": "layout_MZ4QB2",
+          "opacity": 0
+        },
+        {
+          "id": "111:2021",
+          "name": "Ellipse 9",
+          "type": "ELLIPSE",
+          "boundingBox": {
+            "x": 197,
+            "y": 836,
+            "width": 538,
+            "height": 538
+          },
+          "fills": "fill_OJD5IH",
+          "effects": "effect_K2Q4TM",
+          "layout": "layout_CYY69O",
+          "opacity": 0
+        },
+        {
+          "id": "111:1564",
+          "name": "Floating Button Container",
+          "type": "FRAME",
+          "layout": "layout_1ZFZXE"
+        },
+        {
+          "id": "111:1565",
+          "name": "Main Container",
+          "type": "FRAME",
+          "layout": "layout_8C40VJ",
+          "children": [
+            {
+              "id": "111:1566",
+              "name": "Header Container",
+              "type": "FRAME",
+              "layout": "layout_61OYIK",
+              "children": [
+                {
+                  "id": "111:2177",
+                  "name": "Background Ellipses",
+                  "type": "GROUP",
+                  "boundingBox": {
+                    "x": -172,
+                    "y": -410,
+                    "width": 742.8673706054688,
+                    "height": 417
+                  },
+                  "layout": "layout_IY5DX0",
+                  "children": [
+                    {
+                      "id": "111:2178",
+                      "name": "Ellipse 7",
+                      "type": "ELLIPSE",
+                      "boundingBox": {
+                        "x": 13.71630859375,
+                        "y": -364.43377685546875,
+                        "width": 372.1241760253906,
+                        "height": 371.43377685546875
+                      },
+                      "fills": "fill_OJD5IH",
+                      "effects": "effect_K2Q4TM",
+                      "layout": "layout_8YP87Z",
+                      "opacity": 0.5
+                    },
+                    {
+                      "id": "111:2179",
+                      "name": "Ellipse 8",
+                      "type": "ELLIPSE",
+                      "boundingBox": {
+                        "x": -172,
+                        "y": -410,
+                        "width": 371.43377685546875,
+                        "height": 371.43377685546875
+                      },
+                      "fills": "fill_OJD5IH",
+                      "effects": "effect_K2Q4TM",
+                      "layout": "layout_F15IJL",
+                      "opacity": 0.5
+                    },
+                    {
+                      "id": "111:2180",
+                      "name": "Ellipse 9",
+                      "type": "ELLIPSE",
+                      "boundingBox": {
+                        "x": 199.43359375,
+                        "y": -410,
+                        "width": 371.43377685546875,
+                        "height": 371.43377685546875
+                      },
+                      "fills": "fill_OJD5IH",
+                      "effects": "effect_K2Q4TM",
+                      "layout": "layout_KZW6VH",
+                      "opacity": 0.5
+                    }
+                  ]
+                },
+                {
+                  "id": "111:1568",
+                  "name": "Status Bar",
+                  "type": "FRAME",
+                  "layout": "layout_FQGLIG",
+                  "children": [
+                    {
+                      "id": "111:1569",
+                      "name": "Time",
+                      "type": "TEXT",
+                      "textStyle": "style_IM042Z",
+                      "fills": "fill_HC6PVC",
+                      "layout": "layout_B3VVY9",
+                      "text": "9:41"
+                    },
+                    {
+                      "id": "111:1570",
+                      "name": "Levels",
+                      "type": "FRAME",
+                      "layout": "layout_751DFH",
+                      "children": [
+                        {
+                          "id": "111:1571",
+                          "name": "Cellular Connection",
+                          "type": "IMAGE-SVG",
+                          "fills": "fill_HC6PVC",
+                          "layout": "layout_PBVS6Z"
+                        },
+                        {
+                          "id": "111:1572",
+                          "name": "Wifi",
+                          "type": "IMAGE-SVG",
+                          "fills": "fill_HC6PVC",
+                          "layout": "layout_G82BZ5"
+                        },
+                        {
+                          "id": "111:1573",
+                          "name": "Battery",
+                          "type": "GROUP",
+                          "fills": "fill_HC6PVC",
+                          "layout": "layout_B0FR30",
+                          "borderRadius": "0px 0px 0px 0px",
+                          "children": [
+                            {
+                              "id": "111:1574",
+                              "name": "Border",
+                              "type": "RECTANGLE",
+                              "boundingBox": {
+                                "x": 341.671875,
+                                "y": 20,
+                                "width": 25,
+                                "height": 13
+                              },
+                              "fills": "fill_ZOK6MD",
+                              "strokes": "stroke_5OWRUD",
+                              "layout": "layout_DSSOEO",
+                              "opacity": 0.3499999940395355,
+                              "borderRadius": "4.300000190734863px"
+                            },
+                            {
+                              "id": "111:1575",
+                              "name": "Cap",
+                              "type": "IMAGE-SVG",
+                              "boundingBox": {
+                                "x": 367.671875,
+                                "y": 24.7811279296875,
+                                "width": 1.328037977218628,
+                                "height": 4.075471878051758
+                              },
+                              "fills": "fill_HC6PVC",
+                              "layout": "layout_TZ1CSP",
+                              "opacity": 0.4000000059604645
+                            },
+                            {
+                              "id": "111:1576",
+                              "name": "Capacity",
+                              "type": "RECTANGLE",
+                              "boundingBox": {
+                                "x": 343.671875,
+                                "y": 22,
+                                "width": 21,
+                                "height": 9
+                              },
+                              "fills": "fill_HC6PVC",
+                              "layout": "layout_1OXP8G",
+                              "borderRadius": "2.5px"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "111:1577",
+              "name": "Greeting Container",
+              "type": "FRAME",
+              "layout": "layout_U518HI",
+              "children": [
+                {
+                  "id": "111:1578",
+                  "name": "Greeting Text Container",
+                  "type": "FRAME",
+                  "layout": "layout_X8ZS7Q",
+                  "children": [
+                    {
+                      "id": "111:1579",
+                      "name": "Greeting Text",
+                      "type": "TEXT",
+                      "textStyle": "style_3B00FC",
+                      "fills": "fill_VXBTII",
+                      "layout": "layout_UPGZAI",
+                      "text": "Hello, Anand"
+                    },
+                    {
+                      "id": "111:1580",
+                      "name": "Updates Text",
+                      "type": "TEXT",
+                      "textStyle": "style_3292ZB",
+                      "fills": "fill_HC6PVC",
+                      "layout": "layout_UPGZAI",
+                      "text": "Latest Updates"
+                    }
+                  ]
+                },
+                {
+                  "id": "111:1581",
+                  "name": "Notification Container",
+                  "type": "FRAME",
+                  "layout": "layout_H0UUP6",
+                  "children": [
+                    {
+                      "id": "111:1582",
+                      "name": "lucide/bell",
+                      "type": "FRAME",
+                      "fills": "fill_HC6PVC",
+                      "layout": "layout_QPCD10",
+                      "children": [
+                        {
+                          "id": "111:1583",
+                          "name": "Vector",
+                          "type": "IMAGE-SVG",
+                          "boundingBox": {
+                            "x": 291.00048828125,
+                            "y": 67,
+                            "width": 19.99991226196289,
+                            "height": 19.99991226196289
+                          },
+                          "strokes": "stroke_ZNDDXA",
+                          "layout": "layout_1LQPCM"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "111:1584",
+                      "name": "Profile Image Container",
+                      "type": "FRAME",
+                      "strokes": "stroke_XP3IYE",
+                      "layout": "layout_QPCD10",
+                      "borderRadius": "219px",
+                      "children": [
+                        {
+                          "id": "111:1585",
+                          "name": "Profile Image Background",
+                          "type": "RECTANGLE",
+                          "boundingBox": {
+                            "x": 341,
+                            "y": 57,
+                            "width": 40,
+                            "height": 40
+                          },
+                          "fills": "fill_BTX01K",
+                          "layout": "layout_1SYUUB",
+                          "borderRadius": "49px"
+                        },
+                        {
+                          "id": "111:1586",
+                          "name": "ChatGPT Image Jul 19, 2025, 11_42_24 AM 1",
+                          "type": "RECTANGLE",
+                          "boundingBox": {
+                            "x": 342,
+                            "y": 58,
+                            "width": 38,
+                            "height": 57
+                          },
+                          "fills": "fill_XM4N8A",
+                          "layout": "layout_LBZG2D"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "111:1587",
+              "name": "Content Container",
+              "type": "FRAME",
+              "layout": "layout_JCI428",
+              "children": [
+                {
+                  "id": "111:1588",
+                  "name": "Updates Container",
+                  "type": "FRAME",
+                  "layout": "layout_8J4I0B",
+                  "children": [
+                    {
+                      "id": "111:1589",
+                      "name": "Update Item Container",
+                      "type": "FRAME",
+                      "layout": "layout_8J4I0B",
+                      "children": [
+                        {
+                          "id": "111:1590",
+                          "name": "Update Item Header",
+                          "type": "FRAME",
+                          "fills": "fill_W6XTB5",
+                          "strokes": "stroke_XP3IYE",
+                          "layout": "layout_3SNAL2",
+                          "borderRadius": "16px",
+                          "children": [
+                            {
+                              "id": "111:1591",
+                              "name": "Update Item Content",
+                              "type": "FRAME",
+                              "layout": "layout_3YL337",
+                              "children": [
+                                {
+                                  "id": "111:1592",
+                                  "name": "lucide/bot-message-square",
+                                  "type": "FRAME",
+                                  "fills": "fill_HC6PVC",
+                                  "layout": "layout_OG34AM",
+                                  "children": [
+                                    {
+                                      "id": "111:1593",
+                                      "name": "Vector",
+                                      "type": "IMAGE-SVG",
+                                      "boundingBox": {
+                                        "x": 21.66650390625,
+                                        "y": 129.66668701171875,
+                                        "width": 16.666664123535156,
+                                        "height": 16.666664123535156
+                                      },
+                                      "strokes": "stroke_VDTMYP",
+                                      "layout": "layout_RC8Q7O"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1594",
+                                  "name": "Update Item Text Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_XFBBWI",
+                                  "children": [
+                                    {
+                                      "id": "111:1595",
+                                      "name": "Update Item Text",
+                                      "type": "TEXT",
+                                      "textStyle": "style_ESDZG8",
+                                      "fills": "fill_HC6PVC",
+                                      "layout": "layout_UPGZAI",
+                                      "text": "Consider reallocating some of your IT stocks to banking"
+                                    },
+                                    {
+                                      "id": "111:1596",
+                                      "name": "Update Item Links Container",
+                                      "type": "FRAME",
+                                      "layout": "layout_J6XCXH",
+                                      "children": [
+                                        {
+                                          "id": "111:1597",
+                                          "name": "Update Item Link",
+                                          "type": "FRAME",
+                                          "fills": "fill_7FLTCE",
+                                          "layout": "layout_WVJXHH",
+                                          "borderRadius": "20px",
+                                          "children": [
+                                            {
+                                              "id": "111:1598",
+                                              "name": "Update Item Link Text",
+                                              "type": "TEXT",
+                                              "textStyle": "style_5FCWDD",
+                                              "fills": "fill_HC6PVC",
+                                              "layout": "layout_B3VVY9",
+                                              "text": "bloomberg.com"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1599",
+                                          "name": "Update Item Link",
+                                          "type": "FRAME",
+                                          "fills": "fill_7FLTCE",
+                                          "layout": "layout_WVJXHH",
+                                          "borderRadius": "20px",
+                                          "children": [
+                                            {
+                                              "id": "111:1600",
+                                              "name": "Update Item Link Text",
+                                              "type": "TEXT",
+                                              "textStyle": "style_5FCWDD",
+                                              "fills": "fill_HC6PVC",
+                                              "layout": "layout_B3VVY9",
+                                              "text": "moneycontrol.com"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1601",
+                                          "name": "Update Item Link",
+                                          "type": "FRAME",
+                                          "fills": "fill_7FLTCE",
+                                          "layout": "layout_WVJXHH",
+                                          "borderRadius": "20px",
+                                          "children": [
+                                            {
+                                              "id": "111:1602",
+                                              "name": "Update Item Link Text",
+                                              "type": "TEXT",
+                                              "textStyle": "style_5FCWDD",
+                                              "fills": "fill_HC6PVC",
+                                              "layout": "layout_B3VVY9",
+                                              "text": "+3"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "111:1603",
+                              "name": "lucide/chevron-right",
+                              "type": "FRAME",
+                              "layout": "layout_CTX596",
+                              "children": [
+                                {
+                                  "id": "111:1604",
+                                  "name": "Vector",
+                                  "type": "IMAGE-SVG",
+                                  "boundingBox": {
+                                    "x": 361.5,
+                                    "y": 131,
+                                    "width": 3,
+                                    "height": 6
+                                  },
+                                  "strokes": "stroke_H9K4LD",
+                                  "layout": "layout_KI30SV"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "111:1605",
+                          "name": "Update Item Divider",
+                          "type": "FRAME",
+                          "layout": "layout_RH9QC5",
+                          "children": [
+                            {
+                              "id": "111:1606",
+                              "name": "Divider Line",
+                              "type": "RECTANGLE",
+                              "fills": "fill_3M0A9O",
+                              "layout": "layout_II3PW0",
+                              "borderRadius": "24px"
+                            },
+                            {
+                              "id": "111:1607",
+                              "name": "Divider Dot",
+                              "type": "RECTANGLE",
+                              "fills": "fill_LE6O6O",
+                              "layout": "layout_VNBKUW",
+                              "borderRadius": "24px"
+                            },
+                            {
+                              "id": "111:1608",
+                              "name": "Divider Dot",
+                              "type": "RECTANGLE",
+                              "fills": "fill_LE6O6O",
+                              "layout": "layout_VNBKUW",
+                              "borderRadius": "24px"
+                            },
+                            {
+                              "id": "111:1609",
+                              "name": "Divider Dot",
+                              "type": "RECTANGLE",
+                              "fills": "fill_LE6O6O",
+                              "layout": "layout_VNBKUW",
+                              "borderRadius": "24px"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "111:1610",
+                      "name": "Balance Container",
+                      "type": "FRAME",
+                      "fills": "fill_HQQC84",
+                      "strokes": "stroke_XP3IYE",
+                      "layout": "layout_OFT890",
+                      "borderRadius": "16px",
+                      "children": [
+                        {
+                          "id": "111:1611",
+                          "name": "Balance Text Container",
+                          "type": "FRAME",
+                          "layout": "layout_B3NUWS",
+                          "children": [
+                            {
+                              "id": "111:1612",
+                              "name": "Balance Header Container",
+                              "type": "FRAME",
+                              "layout": "layout_LA7P0L",
+                              "children": [
+                                {
+                                  "id": "111:1613",
+                                  "name": "Balance Header Text Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_M2AYS0",
+                                  "children": [
+                                    {
+                                      "id": "111:1614",
+                                      "name": "Balance Header Text",
+                                      "type": "TEXT",
+                                      "textStyle": "style_9POCK0",
+                                      "fills": "fill_VXBTII",
+                                      "layout": "layout_UPGZAI",
+                                      "text": "Bank"
+                                    },
+                                    {
+                                      "id": "111:1615",
+                                      "name": "Balance Header Text",
+                                      "type": "TEXT",
+                                      "textStyle": "style_L6B6QM",
+                                      "fills": "fill_HC6PVC",
+                                      "layout": "layout_UPGZAI",
+                                      "text": "Balance"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1616",
+                                  "name": "Balance Update Text",
+                                  "type": "TEXT",
+                                  "textStyle": "style_4DSBQV",
+                                  "fills": "fill_7FLTCE",
+                                  "layout": "layout_B3VVY9",
+                                  "text": "Updates 2 mins ago"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "111:1617",
+                              "name": "Balance Amount Container",
+                              "type": "FRAME",
+                              "layout": "layout_DTUTSO",
+                              "children": [
+                                {
+                                  "id": "111:1618",
+                                  "name": "Balance Amount Text Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_VLG7ZJ",
+                                  "children": [
+                                    {
+                                      "id": "111:1619",
+                                      "name": "Balance Currency Symbol",
+                                      "type": "TEXT",
+                                      "textStyle": "style_TWSEZC",
+                                      "fills": "fill_VXBTII",
+                                      "layout": "layout_B3VVY9",
+                                      "text": "₹"
+                                    },
+                                    {
+                                      "id": "111:1620",
+                                      "name": "Balance Amount",
+                                      "type": "TEXT",
+                                      "textStyle": "style_6RRWWC",
+                                      "fills": "fill_VXBTII",
+                                      "layout": "layout_B3VVY9",
+                                      "text": "27,92,30,392.86"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "188:306",
+                                  "name": "lucide/eye",
+                                  "type": "FRAME",
+                                  "fills": "fill_HC6PVC",
+                                  "layout": "layout_LNDOHK",
+                                  "children": [
+                                    {
+                                      "id": "188:307",
+                                      "name": "Vector",
+                                      "type": "IMAGE-SVG",
+                                      "boundingBox": {
+                                        "x": 283.8330078125,
+                                        "y": 315.58392333984375,
+                                        "width": 18.334259033203125,
+                                        "height": 12.83220386505127
+                                      },
+                                      "strokes": "stroke_ZNDDXA",
+                                      "layout": "layout_5AILIW"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "111:1624",
+                          "name": "Balance Icons Container",
+                          "type": "FRAME",
+                          "fills": "fill_LE6O6O",
+                          "strokes": "stroke_XP3IYE",
+                          "layout": "layout_VZKLUV",
+                          "borderRadius": "0px 16px 16px 0px",
+                          "children": [
+                            {
+                              "id": "111:1625",
+                              "name": "Balance Icons",
+                              "type": "FRAME",
+                              "layout": "layout_QWF1U7",
+                              "children": [
+                                {
+                                  "id": "111:1626",
+                                  "name": "Balance Icon",
+                                  "type": "GROUP",
+                                  "layout": "layout_QSYTHW",
+                                  "children": [
+                                    {
+                                      "id": "111:1627",
+                                      "name": "Ellipse 1",
+                                      "type": "ELLIPSE",
+                                      "boundingBox": {
+                                        "x": 338.5,
+                                        "y": 233,
+                                        "width": 30,
+                                        "height": 30
+                                      },
+                                      "fills": "fill_ZKBAUY",
+                                      "strokes": "stroke_WOBZEV",
+                                      "layout": "layout_VDZ2VG"
+                                    },
+                                    {
+                                      "id": "111:1628",
+                                      "name": "Balance Icon Image",
+                                      "type": "INSTANCE",
+                                      "boundingBox": {
+                                        "x": 342.25,
+                                        "y": 236.75,
+                                        "width": 22.499998092651367,
+                                        "height": 22.499998092651367
+                                      },
+                                      "componentId": "8:67",
+                                      "layout": "layout_50474B",
+                                      "children": [
+                                        {
+                                          "id": "I111:1628;55:304",
+                                          "name": "bank_of_baroda",
+                                          "type": "FRAME",
+                                          "boundingBox": {
+                                            "x": 346.46875,
+                                            "y": 240.71875,
+                                            "width": 14.062498092651367,
+                                            "height": 14.062498092651367
+                                          },
+                                          "fills": "fill_HC6PVC",
+                                          "layout": "layout_G5LHUP",
+                                          "children": [
+                                            {
+                                              "id": "I111:1628;55:305",
+                                              "name": "Clip path group",
+                                              "type": "GROUP",
+                                              "boundingBox": {
+                                                "x": 346.46875,
+                                                "y": 240.71875,
+                                                "width": 14.062498092651367,
+                                                "height": 14.062498092651367
+                                              },
+                                              "layout": "layout_12CSHV",
+                                              "children": [
+                                                {
+                                                  "id": "I111:1628;55:306",
+                                                  "name": "clip0_1_2",
+                                                  "type": "GROUP",
+                                                  "boundingBox": {
+                                                    "x": 346.46875,
+                                                    "y": 240.71875,
+                                                    "width": 14.062498092651367,
+                                                    "height": 14.062498092651367
+                                                  },
+                                                  "layout": "layout_12CSHV",
+                                                  "children": [
+                                                    {
+                                                      "id": "I111:1628;55:307",
+                                                      "name": "Vector",
+                                                      "type": "IMAGE-SVG",
+                                                      "boundingBox": {
+                                                        "x": 346.46875,
+                                                        "y": 240.71875,
+                                                        "width": 14.062498092651367,
+                                                        "height": 14.062498092651367
+                                                      },
+                                                      "fills": "fill_ZOK6MD",
+                                                      "layout": "layout_12CSHV"
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "id": "I111:1628;55:308",
+                                                  "name": "Group",
+                                                  "type": "GROUP",
+                                                  "boundingBox": {
+                                                    "x": 347.09033203125,
+                                                    "y": 242.47149658203125,
+                                                    "width": 12.81931209564209,
+                                                    "height": 10.681451797485352
+                                                  },
+                                                  "layout": "layout_1EV36M",
+                                                  "children": [
+                                                    {
+                                                      "id": "I111:1628;55:309",
+                                                      "name": "Vector",
+                                                      "type": "IMAGE-SVG",
+                                                      "boundingBox": {
+                                                        "x": 348.982421875,
+                                                        "y": 242.91424560546875,
+                                                        "width": 10.92702579498291,
+                                                        "height": 10.238718032836914
+                                                      },
+                                                      "fills": "fill_YQIO08",
+                                                      "layout": "layout_IMG3T5"
+                                                    },
+                                                    {
+                                                      "id": "I111:1628;55:310",
+                                                      "name": "Vector",
+                                                      "type": "IMAGE-SVG",
+                                                      "boundingBox": {
+                                                        "x": 347.09033203125,
+                                                        "y": 242.47149658203125,
+                                                        "width": 10.045363426208496,
+                                                        "height": 10.144998550415039
+                                                      },
+                                                      "fills": "fill_YQIO08",
+                                                      "layout": "layout_HNNBIE"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1629",
+                                  "name": "Balance Icon",
+                                  "type": "GROUP",
+                                  "layout": "layout_QSYTHW",
+                                  "children": [
+                                    {
+                                      "id": "111:1630",
+                                      "name": "Ellipse 1",
+                                      "type": "ELLIPSE",
+                                      "boundingBox": {
+                                        "x": 338.5,
+                                        "y": 271,
+                                        "width": 30,
+                                        "height": 30
+                                      },
+                                      "fills": "fill_ZKBAUY",
+                                      "strokes": "stroke_WOBZEV",
+                                      "layout": "layout_VDZ2VG"
+                                    },
+                                    {
+                                      "id": "111:1631",
+                                      "name": "Balance Icon Image",
+                                      "type": "INSTANCE",
+                                      "boundingBox": {
+                                        "x": 342.25,
+                                        "y": 274.75006103515625,
+                                        "width": 22.499998092651367,
+                                        "height": 22.499998092651367
+                                      },
+                                      "componentId": "8:95",
+                                      "layout": "layout_50474B",
+                                      "children": [
+                                        {
+                                          "id": "I111:1631;55:249",
+                                          "name": "Group 55177",
+                                          "type": "GROUP",
+                                          "boundingBox": {
+                                            "x": 347.171875,
+                                            "y": 280.37506103515625,
+                                            "width": 13.080307960510254,
+                                            "height": 11.249998092651367
+                                          },
+                                          "layout": "layout_MY03AL",
+                                          "children": [
+                                            {
+                                              "id": "I111:1631;55:250",
+                                              "name": "Vector",
+                                              "type": "IMAGE-SVG",
+                                              "boundingBox": {
+                                                "x": 347.171875,
+                                                "y": 280.37506103515625,
+                                                "width": 13.080307960510254,
+                                                "height": 11.249998092651367
+                                              },
+                                              "fills": "fill_6TGM2U",
+                                              "layout": "layout_SRS41A"
+                                            },
+                                            {
+                                              "id": "I111:1631;55:251",
+                                              "name": "Vector",
+                                              "type": "IMAGE-SVG",
+                                              "boundingBox": {
+                                                "x": 352.91259765625,
+                                                "y": 281.67950439453125,
+                                                "width": 1.5323257446289062,
+                                                "height": 8.727511405944824
+                                              },
+                                              "fills": "fill_AMEX5N",
+                                              "layout": "layout_DQ0GK6"
+                                            },
+                                            {
+                                              "id": "I111:1631;55:252",
+                                              "name": "Vector",
+                                              "type": "IMAGE-SVG",
+                                              "boundingBox": {
+                                                "x": 348.83642578125,
+                                                "y": 283.05157470703125,
+                                                "width": 9.794197082519531,
+                                                "height": 5.879046440124512
+                                              },
+                                              "fills": "fill_HC6PVC",
+                                              "layout": "layout_NNAVFE"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1632",
+                                  "name": "Balance Icon",
+                                  "type": "GROUP",
+                                  "layout": "layout_QSYTHW",
+                                  "children": [
+                                    {
+                                      "id": "111:1633",
+                                      "name": "Ellipse 2",
+                                      "type": "ELLIPSE",
+                                      "boundingBox": {
+                                        "x": 338.5,
+                                        "y": 309,
+                                        "width": 30,
+                                        "height": 30
+                                      },
+                                      "fills": "fill_Q55SC3",
+                                      "strokes": "stroke_WOBZEV",
+                                      "layout": "layout_VDZ2VG"
+                                    },
+                                    {
+                                      "id": "111:1634",
+                                      "name": "Balance Icon Text",
+                                      "type": "TEXT",
+                                      "boundingBox": {
+                                        "x": 345.84814453125,
+                                        "y": 320.396240234375,
+                                        "width": 14.414836883544922,
+                                        "height": 8.23705005645752
+                                      },
+                                      "textStyle": "style_J8IAWR",
+                                      "fills": "fill_HC6PVC",
+                                      "layout": "layout_8B1C5S",
+                                      "text": "+2"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "111:1635",
+                      "name": "Investments Container",
+                      "type": "FRAME",
+                      "fills": "fill_HQQC84",
+                      "strokes": "stroke_XP3IYE",
+                      "layout": "layout_HALNJI",
+                      "borderRadius": "16px",
+                      "children": [
+                        {
+                          "id": "111:1636",
+                          "name": "Investments Content Container",
+                          "type": "FRAME",
+                          "layout": "layout_Y569Q5",
+                          "children": [
+                            {
+                              "id": "111:1637",
+                              "name": "Investments Header Container",
+                              "type": "FRAME",
+                              "layout": "layout_MIP6HB",
+                              "children": [
+                                {
+                                  "id": "111:1638",
+                                  "name": "Investments Header",
+                                  "type": "FRAME",
+                                  "layout": "layout_LA7P0L",
+                                  "children": [
+                                    {
+                                      "id": "111:1639",
+                                      "name": "Investments Header Text Container",
+                                      "type": "FRAME",
+                                      "layout": "layout_M2AYS0",
+                                      "children": [
+                                        {
+                                          "id": "111:1640",
+                                          "name": "Investments Header Text",
+                                          "type": "TEXT",
+                                          "textStyle": "style_9POCK0",
+                                          "fills": "fill_VXBTII",
+                                          "layout": "layout_UPGZAI",
+                                          "text": "Your"
+                                        },
+                                        {
+                                          "id": "111:1641",
+                                          "name": "Investments Header Text",
+                                          "type": "TEXT",
+                                          "textStyle": "style_L6B6QM",
+                                          "fills": "fill_HC6PVC",
+                                          "layout": "layout_UPGZAI",
+                                          "text": "Investments"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "111:1642",
+                                      "name": "Investments Header Icon",
+                                      "type": "GROUP",
+                                      "layout": "layout_U1F14L",
+                                      "children": [
+                                        {
+                                          "id": "111:1643",
+                                          "name": "Ellipse 1",
+                                          "type": "ELLIPSE",
+                                          "boundingBox": {
+                                            "x": 339.86328125,
+                                            "y": 371,
+                                            "width": 29.136646270751953,
+                                            "height": 29.136646270751953
+                                          },
+                                          "fills": "fill_LE6O6O",
+                                          "strokes": "stroke_WOBZEV",
+                                          "layout": "layout_1PAAAT"
+                                        },
+                                        {
+                                          "id": "111:1644",
+                                          "name": "lucide/chevron-right",
+                                          "type": "FRAME",
+                                          "boundingBox": {
+                                            "x": 348.86328125,
+                                            "y": 380,
+                                            "width": 12,
+                                            "height": 12
+                                          },
+                                          "layout": "layout_MIG0T7",
+                                          "children": [
+                                            {
+                                              "id": "111:1645",
+                                              "name": "Vector",
+                                              "type": "IMAGE-SVG",
+                                              "boundingBox": {
+                                                "x": 353.36328125,
+                                                "y": 383,
+                                                "width": 3,
+                                                "height": 6
+                                              },
+                                              "strokes": "stroke_H9K4LD",
+                                              "layout": "layout_KI30SV"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1646",
+                                  "name": "Investments Tabs Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_RB9TQA",
+                                  "children": [
+                                    {
+                                      "id": "111:1647",
+                                      "name": "Investments Tab",
+                                      "type": "FRAME",
+                                      "fills": "fill_PGSWAS",
+                                      "layout": "layout_WMYJZV",
+                                      "borderRadius": "8px",
+                                      "children": [
+                                        {
+                                          "id": "111:1648",
+                                          "name": "Investments Tab Text",
+                                          "type": "TEXT",
+                                          "textStyle": "style_ESDZG8",
+                                          "fills": "fill_HC6PVC",
+                                          "layout": "layout_B3VVY9",
+                                          "text": "Stock Holdings"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "111:1649",
+                                      "name": "Investments Tab",
+                                      "type": "FRAME",
+                                      "layout": "layout_WMYJZV",
+                                      "children": [
+                                        {
+                                          "id": "111:1650",
+                                          "name": "Investments Tab Text",
+                                          "type": "TEXT",
+                                          "textStyle": "style_RB16GZ",
+                                          "fills": "fill_HC6PVC",
+                                          "layout": "layout_B3VVY9",
+                                          "text": "Mutual Funds"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1651",
+                                  "name": "Investments Progress Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_8BJW2D",
+                                  "children": [
+                                    {
+                                      "id": "111:1652",
+                                      "name": "Investments Progress Bar",
+                                      "type": "RECTANGLE",
+                                      "fills": "fill_PGSWAS",
+                                      "layout": "layout_JXNMUI",
+                                      "borderRadius": "4px"
+                                    },
+                                    {
+                                      "id": "111:1653",
+                                      "name": "Investments Progress Text",
+                                      "type": "TEXT",
+                                      "textStyle": "style_5B0MBH",
+                                      "fills": "fill_HC6PVC",
+                                      "layout": "layout_B3VVY9",
+                                      "text": "63%"
+                                    },
+                                    {
+                                      "id": "111:1654",
+                                      "name": "Investments Progress Bar",
+                                      "type": "RECTANGLE",
+                                      "fills": "fill_7FLTCE",
+                                      "layout": "layout_YP6WUP",
+                                      "borderRadius": "2px"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "id": "111:1655",
+                              "name": "Investments Details Container",
+                              "type": "FRAME",
+                              "layout": "layout_8J4I0B",
+                              "children": [
+                                {
+                                  "id": "111:1656",
+                                  "name": "Net Value Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_U7KF83",
+                                  "children": [
+                                    {
+                                      "id": "111:1657",
+                                      "name": "Net Value Text",
+                                      "type": "TEXT",
+                                      "textStyle": "style_SEG149",
+                                      "fills": "fill_7FLTCE",
+                                      "layout": "layout_B3VVY9",
+                                      "text": "Net Value"
+                                    },
+                                    {
+                                      "id": "111:1658",
+                                      "name": "Net Value Amount Container",
+                                      "type": "FRAME",
+                                      "layout": "layout_V48VSJ",
+                                      "children": [
+                                        {
+                                          "id": "111:1659",
+                                          "name": "Net Value Amount Text Container",
+                                          "type": "FRAME",
+                                          "layout": "layout_VLG7ZJ",
+                                          "children": [
+                                            {
+                                              "id": "111:1660",
+                                              "name": "Net Value Currency Symbol",
+                                              "type": "TEXT",
+                                              "textStyle": "style_EVMV68",
+                                              "fills": "fill_VXBTII",
+                                              "layout": "layout_B3VVY9",
+                                              "text": "₹"
+                                            },
+                                            {
+                                              "id": "111:1661",
+                                              "name": "Net Value Amount",
+                                              "type": "TEXT",
+                                              "textStyle": "style_0VCVJG",
+                                              "fills": "fill_VXBTII",
+                                              "layout": "layout_B3VVY9",
+                                              "text": "27,92,30,392.86"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1662",
+                                          "name": "Net Value Change Text",
+                                          "type": "TEXT",
+                                          "textStyle": "style_J8IAWR",
+                                          "fills": "fill_8L8FEP",
+                                          "layout": "layout_B3VVY9",
+                                          "text": "+19.2% in the last 7 days"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "id": "111:1663",
+                                  "name": "Investment Items Container",
+                                  "type": "FRAME",
+                                  "layout": "layout_7TUFVN",
+                                  "children": [
+                                    {
+                                      "id": "111:1664",
+                                      "name": "Investment Item",
+                                      "type": "FRAME",
+                                      "fills": "fill_W6XTB5",
+                                      "strokes": "stroke_XP3IYE",
+                                      "layout": "layout_SR4XE3",
+                                      "borderRadius": "12px",
+                                      "children": [
+                                        {
+                                          "id": "111:1665",
+                                          "name": "Investment Item Header",
+                                          "type": "FRAME",
+                                          "layout": "layout_H41MGX",
+                                          "children": [
+                                            {
+                                              "id": "111:1666",
+                                              "name": "Investment Item Icon Container",
+                                              "type": "GROUP",
+                                              "layout": "layout_OG34AM",
+                                              "children": [
+                                                {
+                                                  "id": "111:1667",
+                                                  "name": "Ellipse 1",
+                                                  "type": "ELLIPSE",
+                                                  "boundingBox": {
+                                                    "x": 36,
+                                                    "y": 565.1366577148438,
+                                                    "width": 20,
+                                                    "height": 20
+                                                  },
+                                                  "fills": "fill_ZKBAUY",
+                                                  "strokes": "stroke_WOBZEV",
+                                                  "layout": "layout_FOWMCX"
+                                                },
+                                                {
+                                                  "id": "111:1668",
+                                                  "name": "Group",
+                                                  "type": "GROUP",
+                                                  "boundingBox": {
+                                                    "x": 40.6669921875,
+                                                    "y": 569.8032836914062,
+                                                    "width": 10.815725326538086,
+                                                    "height": 10.666666030883789
+                                                  },
+                                                  "layout": "layout_3BF3Z4",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1669",
+                                                      "name": "Group",
+                                                      "type": "GROUP",
+                                                      "boundingBox": {
+                                                        "x": 40.6669921875,
+                                                        "y": 569.8032836914062,
+                                                        "width": 10.815725326538086,
+                                                        "height": 10.666666030883789
+                                                      },
+                                                      "layout": "layout_YN2IF6",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1670",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 40.6669921875,
+                                                            "y": 569.8032836914062,
+                                                            "width": 10.815725326538086,
+                                                            "height": 10.666666030883789
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_YN2IF6"
+                                                        },
+                                                        {
+                                                          "id": "111:1671",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 43.9912109375,
+                                                            "y": 575.8672485351562,
+                                                            "width": 1.7170250415802002,
+                                                            "height": 4.573979377746582
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_EKBS1C"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1672",
+                                              "name": "Investment Item Text Container",
+                                              "type": "FRAME",
+                                              "layout": "layout_V48VSJ",
+                                              "children": [
+                                                {
+                                                  "id": "111:1673",
+                                                  "name": "Investment Item Name",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_ESDZG8",
+                                                  "fills": "fill_HC6PVC",
+                                                  "layout": "layout_WVKGHS",
+                                                  "text": "Reliance Industries Ltd"
+                                                },
+                                                {
+                                                  "id": "111:1674",
+                                                  "name": "Investment Item Change Container",
+                                                  "type": "FRAME",
+                                                  "fills": "fill_8L8FEP",
+                                                  "layout": "layout_7TFNC8",
+                                                  "borderRadius": "12px",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1675",
+                                                      "name": "Polygon 1",
+                                                      "type": "IMAGE-SVG",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_5WPUAL"
+                                                    },
+                                                    {
+                                                      "id": "111:1676",
+                                                      "name": "Investment Item Change Text",
+                                                      "type": "TEXT",
+                                                      "textStyle": "style_J8IAWR",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_B3VVY9",
+                                                      "text": "+9.8%"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1677",
+                                          "name": "Investment Item Details Container",
+                                          "type": "FRAME",
+                                          "layout": "layout_UGR2UQ",
+                                          "children": [
+                                            {
+                                              "id": "111:1678",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1679",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Invested"
+                                                },
+                                                {
+                                                  "id": "111:1680",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1681",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1682",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1683",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "14760.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1684",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1685",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Current"
+                                                },
+                                                {
+                                                  "id": "111:1686",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1687",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1688",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1689",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "16928.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "111:1690",
+                                      "name": "Investment Item",
+                                      "type": "FRAME",
+                                      "fills": "fill_W6XTB5",
+                                      "strokes": "stroke_XP3IYE",
+                                      "layout": "layout_SR4XE3",
+                                      "borderRadius": "12px",
+                                      "children": [
+                                        {
+                                          "id": "111:1691",
+                                          "name": "Investment Item Header",
+                                          "type": "FRAME",
+                                          "layout": "layout_H41MGX",
+                                          "children": [
+                                            {
+                                              "id": "111:1692",
+                                              "name": "Investment Item Icon Container",
+                                              "type": "GROUP",
+                                              "layout": "layout_OG34AM",
+                                              "children": [
+                                                {
+                                                  "id": "111:1693",
+                                                  "name": "Ellipse 1",
+                                                  "type": "ELLIPSE",
+                                                  "boundingBox": {
+                                                    "x": 279,
+                                                    "y": 565.1366577148438,
+                                                    "width": 20,
+                                                    "height": 20
+                                                  },
+                                                  "fills": "fill_ZKBAUY",
+                                                  "strokes": "stroke_WOBZEV",
+                                                  "layout": "layout_FOWMCX"
+                                                },
+                                                {
+                                                  "id": "111:1694",
+                                                  "name": "Group",
+                                                  "type": "GROUP",
+                                                  "boundingBox": {
+                                                    "x": 283.6669921875,
+                                                    "y": 569.8032836914062,
+                                                    "width": 10.815725326538086,
+                                                    "height": 10.666666030883789
+                                                  },
+                                                  "layout": "layout_3BF3Z4",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1695",
+                                                      "name": "Group",
+                                                      "type": "GROUP",
+                                                      "boundingBox": {
+                                                        "x": 283.6669921875,
+                                                        "y": 569.8032836914062,
+                                                        "width": 10.815725326538086,
+                                                        "height": 10.666666030883789
+                                                      },
+                                                      "layout": "layout_YN2IF6",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1696",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 283.6669921875,
+                                                            "y": 569.8032836914062,
+                                                            "width": 10.815725326538086,
+                                                            "height": 10.666666030883789
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_YN2IF6"
+                                                        },
+                                                        {
+                                                          "id": "111:1697",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 286.9912109375,
+                                                            "y": 575.8672485351562,
+                                                            "width": 1.7170250415802002,
+                                                            "height": 4.573979377746582
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_EKBS1C"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1698",
+                                              "name": "Investment Item Text Container",
+                                              "type": "FRAME",
+                                              "layout": "layout_V48VSJ",
+                                              "children": [
+                                                {
+                                                  "id": "111:1699",
+                                                  "name": "Investment Item Name",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_ESDZG8",
+                                                  "fills": "fill_HC6PVC",
+                                                  "layout": "layout_WVKGHS",
+                                                  "text": "Reliance Industries Ltd"
+                                                },
+                                                {
+                                                  "id": "111:1700",
+                                                  "name": "Investment Item Change Container",
+                                                  "type": "FRAME",
+                                                  "fills": "fill_8L8FEP",
+                                                  "layout": "layout_7TFNC8",
+                                                  "borderRadius": "12px",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1701",
+                                                      "name": "Polygon 1",
+                                                      "type": "IMAGE-SVG",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_5WPUAL"
+                                                    },
+                                                    {
+                                                      "id": "111:1702",
+                                                      "name": "Investment Item Change Text",
+                                                      "type": "TEXT",
+                                                      "textStyle": "style_J8IAWR",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_B3VVY9",
+                                                      "text": "+9.8%"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1703",
+                                          "name": "Investment Item Details Container",
+                                          "type": "FRAME",
+                                          "layout": "layout_UGR2UQ",
+                                          "children": [
+                                            {
+                                              "id": "111:1704",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1705",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Invested"
+                                                },
+                                                {
+                                                  "id": "111:1706",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1707",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1708",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1709",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "14760.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1710",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1711",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Current"
+                                                },
+                                                {
+                                                  "id": "111:1712",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1713",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1714",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1715",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "16928.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "id": "111:1716",
+                                      "name": "Investment Item",
+                                      "type": "FRAME",
+                                      "fills": "fill_W6XTB5",
+                                      "strokes": "stroke_XP3IYE",
+                                      "layout": "layout_SR4XE3",
+                                      "borderRadius": "12px",
+                                      "children": [
+                                        {
+                                          "id": "111:1717",
+                                          "name": "Investment Item Header",
+                                          "type": "FRAME",
+                                          "layout": "layout_H41MGX",
+                                          "children": [
+                                            {
+                                              "id": "111:1718",
+                                              "name": "Investment Item Icon Container",
+                                              "type": "GROUP",
+                                              "layout": "layout_OG34AM",
+                                              "children": [
+                                                {
+                                                  "id": "111:1719",
+                                                  "name": "Ellipse 1",
+                                                  "type": "ELLIPSE",
+                                                  "boundingBox": {
+                                                    "x": 522,
+                                                    "y": 565.1366577148438,
+                                                    "width": 20,
+                                                    "height": 20
+                                                  },
+                                                  "fills": "fill_ZKBAUY",
+                                                  "strokes": "stroke_WOBZEV",
+                                                  "layout": "layout_FOWMCX"
+                                                },
+                                                {
+                                                  "id": "111:1720",
+                                                  "name": "Group",
+                                                  "type": "GROUP",
+                                                  "boundingBox": {
+                                                    "x": 526.6669921875,
+                                                    "y": 569.8032836914062,
+                                                    "width": 10.815725326538086,
+                                                    "height": 10.666666030883789
+                                                  },
+                                                  "layout": "layout_3BF3Z4",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1721",
+                                                      "name": "Group",
+                                                      "type": "GROUP",
+                                                      "boundingBox": {
+                                                        "x": 526.6669921875,
+                                                        "y": 569.8032836914062,
+                                                        "width": 10.815725326538086,
+                                                        "height": 10.666666030883789
+                                                      },
+                                                      "layout": "layout_YN2IF6",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1722",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 526.6669921875,
+                                                            "y": 569.8032836914062,
+                                                            "width": 10.815725326538086,
+                                                            "height": 10.666666030883789
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_YN2IF6"
+                                                        },
+                                                        {
+                                                          "id": "111:1723",
+                                                          "name": "Vector",
+                                                          "type": "IMAGE-SVG",
+                                                          "boundingBox": {
+                                                            "x": 529.9912109375,
+                                                            "y": 575.8672485351562,
+                                                            "width": 1.7170250415802002,
+                                                            "height": 4.573979377746582
+                                                          },
+                                                          "fills": "fill_40X1ZC",
+                                                          "layout": "layout_EKBS1C"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1724",
+                                              "name": "Investment Item Text Container",
+                                              "type": "FRAME",
+                                              "layout": "layout_V48VSJ",
+                                              "children": [
+                                                {
+                                                  "id": "111:1725",
+                                                  "name": "Investment Item Name",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_ESDZG8",
+                                                  "fills": "fill_HC6PVC",
+                                                  "layout": "layout_WVKGHS",
+                                                  "text": "Reliance Industries Ltd"
+                                                },
+                                                {
+                                                  "id": "111:1726",
+                                                  "name": "Investment Item Change Container",
+                                                  "type": "FRAME",
+                                                  "fills": "fill_8L8FEP",
+                                                  "layout": "layout_7TFNC8",
+                                                  "borderRadius": "12px",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1727",
+                                                      "name": "Polygon 1",
+                                                      "type": "IMAGE-SVG",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_5WPUAL"
+                                                    },
+                                                    {
+                                                      "id": "111:1728",
+                                                      "name": "Investment Item Change Text",
+                                                      "type": "TEXT",
+                                                      "textStyle": "style_J8IAWR",
+                                                      "fills": "fill_HC6PVC",
+                                                      "layout": "layout_B3VVY9",
+                                                      "text": "+9.8%"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "id": "111:1729",
+                                          "name": "Investment Item Details Container",
+                                          "type": "FRAME",
+                                          "layout": "layout_UGR2UQ",
+                                          "children": [
+                                            {
+                                              "id": "111:1730",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1731",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Invested"
+                                                },
+                                                {
+                                                  "id": "111:1732",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1733",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1734",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1735",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_HC6PVC",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "14760.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "id": "111:1736",
+                                              "name": "Investment Item Detail",
+                                              "type": "FRAME",
+                                              "layout": "layout_X8ZS7Q",
+                                              "children": [
+                                                {
+                                                  "id": "111:1737",
+                                                  "name": "Investment Item Detail Text",
+                                                  "type": "TEXT",
+                                                  "textStyle": "style_4DSBQV",
+                                                  "fills": "fill_H8NP99",
+                                                  "layout": "layout_B3VVY9",
+                                                  "text": "Current"
+                                                },
+                                                {
+                                                  "id": "111:1738",
+                                                  "name": "Investment Item Detail Amount Container",
+                                                  "type": "FRAME",
+                                                  "layout": "layout_MDTHQE",
+                                                  "children": [
+                                                    {
+                                                      "id": "111:1739",
+                                                      "name": "Investment Item Detail Amount Text Container",
+                                                      "type": "FRAME",
+                                                      "layout": "layout_VLG7ZJ",
+                                                      "children": [
+                                                        {
+                                                          "id": "111:1740",
+                                                          "name": "Investment Item Detail Currency Symbol",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_EVMV68",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "₹"
+                                                        },
+                                                        {
+                                                          "id": "111:1741",
+                                                          "name": "Investment Item Detail Amount",
+                                                          "type": "TEXT",
+                                                          "textStyle": "style_ESDZG8",
+                                                          "fills": "fill_VXBTII",
+                                                          "layout": "layout_B3VVY9",
+                                                          "text": "16928.3"
+                                                        }
+                                                      ]
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "111:1743",
+                  "name": "Assistant Container",
+                  "type": "FRAME",
+                  "fills": "fill_L0HSRZ",
+                  "strokes": "stroke_XP3IYE",
+                  "effects": "effect_2OTEDR",
+                  "layout": "layout_V7SWQ2",
+                  "borderRadius": "16px 16px 48px 48px",
+                  "children": [
+                    {
+                      "id": "111:1744",
+                      "name": "Assistant Content Container",
+                      "type": "FRAME",
+                      "layout": "layout_O31FWE",
+                      "children": [
+                        {
+                          "id": "111:1745",
+                          "name": "Assistant Icon Container",
+                          "type": "GROUP",
+                          "layout": "layout_0SJ8NQ",
+                          "children": [
+                            {
+                              "id": "111:1746",
+                              "name": "Ellipse 7",
+                              "type": "ELLIPSE",
+                              "boundingBox": {
+                                "x": 164.5,
+                                "y": 692.13671875,
+                                "width": 64,
+                                "height": 64
+                              },
+                              "fills": "fill_W6XTB5",
+                              "strokes": "stroke_XP3IYE",
+                              "layout": "layout_TPD4LZ"
+                            },
+                            {
+                              "id": "111:1747",
+                              "name": "lucide/mic",
+                              "type": "FRAME",
+                              "boundingBox": {
+                                "x": 180.5,
+                                "y": 708.13671875,
+                                "width": 32,
+                                "height": 32
+                              },
+                              "fills": "fill_HC6PVC",
+                              "layout": "layout_7H09E7",
+                              "children": [
+                                {
+                                  "id": "111:1748",
+                                  "name": "Vector",
+                                  "type": "IMAGE-SVG",
+                                  "boundingBox": {
+                                    "x": 187.16650390625,
+                                    "y": 710.8033447265625,
+                                    "width": 18.666667938232422,
+                                    "height": 26.666669845581055
+                                  },
+                                  "strokes": "stroke_ZNDDXA",
+                                  "layout": "layout_9JPND7"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "111:1749",
+                          "name": "Assistant Text Container",
+                          "type": "FRAME",
+                          "layout": "layout_6U85W8",
+                          "children": [
+                            {
+                              "id": "111:1750",
+                              "name": "Assistant Text",
+                              "type": "TEXT",
+                              "textStyle": "style_XY60Y5",
+                              "fills": "fill_7FLTCE",
+                              "layout": "layout_UPGZAI",
+                              "text": "Hold and speak to assistant"
+                            },
+                            {
+                              "id": "111:1751",
+                              "name": "Assistant Divider",
+                              "type": "RECTANGLE",
+                              "fills": "fill_GS5OFF",
+                              "layout": "layout_R78FCO",
+                              "borderRadius": "14px"
+                            },
+                            {
+                              "id": "111:1752",
+                              "name": "Assistant Text",
+                              "type": "TEXT",
+                              "textStyle": "style_Y9VS7K",
+                              "fills": "fill_7FLTCE",
+                              "layout": "layout_UPGZAI",
+                              "text": "Swipe down for keyboard"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "111:1753",
+                      "name": "lucide/keyboard",
+                      "type": "FRAME",
+                      "fills": "fill_HC6PVC",
+                      "layout": "layout_KVT2XA",
+                      "children": [
+                        {
+                          "id": "111:1754",
+                          "name": "Vector",
+                          "type": "IMAGE-SVG",
+                          "boundingBox": {
+                            "x": 186.5,
+                            "y": 812,
+                            "width": 20,
+                            "height": 16
+                          },
+                          "strokes": "stroke_WOBZEV",
+                          "layout": "layout_FNUWZ1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalVars": {
+    "styles": {
+      "fill_Q66GAP": [
+        "#090A09"
+      ],
+      "layout_MXS74T": {
+        "mode": "none",
+        "dimensions": {
+          "width": 393,
+          "height": 852
+        }
+      },
+      "fill_AEEDL0": [
+        {
+          "type": "GRADIENT_RADIAL",
+          "gradientHandlePositions": [
+            {
+              "x": 0.5,
+              "y": 0.49999999999999994
+            },
+            {
+              "x": 0.5,
+              "y": 0.9999999999999999
+            },
+            {
+              "x": 0,
+              "y": 0.5
+            }
+          ],
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "hex": "#95FF00",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 1,
+              "color": {
+                "hex": "#95FF00",
+                "opacity": 0.1
+              }
+            }
+          ]
+        }
+      ],
+      "effect_K2Q4TM": {
+        "filter": "blur(100px)"
+      },
+      "layout_CEFG5K": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": -72,
+          "y": 770
+        },
+        "dimensions": {
+          "width": 539,
+          "height": 538
+        }
+      },
+      "fill_OJD5IH": [
+        {
+          "type": "GRADIENT_RADIAL",
+          "gradientHandlePositions": [
+            {
+              "x": 0.5,
+              "y": 0.49999999999999994
+            },
+            {
+              "x": 0.5,
+              "y": 0.9999999999999999
+            },
+            {
+              "x": 0,
+              "y": 0.5
+            }
+          ],
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "hex": "#6343B9",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 0.25,
+              "color": {
+                "hex": "#282EDA",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 0.5,
+              "color": {
+                "hex": "#1B6796",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 0.75,
+              "color": {
+                "hex": "#2D9E0A",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 0.875,
+              "color": {
+                "hex": "#F8FF28",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 0.9375,
+              "color": {
+                "hex": "#F15A29",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 1,
+              "color": {
+                "hex": "#F12929",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "layout_MZ4QB2": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": -341,
+          "y": 836
+        },
+        "dimensions": {
+          "width": 538,
+          "height": 538
+        }
+      },
+      "layout_CYY69O": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 197,
+          "y": 836
+        },
+        "dimensions": {
+          "width": 538,
+          "height": 538
+        }
+      },
+      "layout_1ZFZXE": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "-8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        },
+        "locationRelativeToParent": {
+          "x": 134,
+          "y": 142
+        }
+      },
+      "layout_8C40VJ": {
+        "mode": "column",
+        "alignItems": "center",
+        "gap": "15px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 393
+        }
+      },
+      "layout_61OYIK": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "height": 38
+        }
+      },
+      "layout_IY5DX0": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": -172,
+          "y": -410
+        },
+        "dimensions": {
+          "width": 742.87,
+          "height": 417
+        }
+      },
+      "layout_8YP87Z": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 185.72,
+          "y": 45.57
+        },
+        "dimensions": {
+          "width": 372.12,
+          "height": 371.43
+        }
+      },
+      "layout_F15IJL": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 371.43,
+          "height": 371.43
+        }
+      },
+      "layout_KZW6VH": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 371.43,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 371.43,
+          "height": 371.43
+        }
+      },
+      "layout_FQGLIG": {
+        "mode": "row",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "gap": "104px",
+        "padding": "2px 24px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 393
+        }
+      },
+      "style_IM042Z": {
+        "fontFamily": "SF Pro",
+        "fontWeight": 590,
+        "fontSize": 17,
+        "lineHeight": "1.2941176470588236em",
+        "textAlignHorizontal": "CENTER",
+        "textAlignVertical": "TOP"
+      },
+      "fill_HC6PVC": [
+        "#FFFFFF"
+      ],
+      "layout_B3VVY9": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_751DFH": {
+        "mode": "row",
+        "justifyContent": "flex-end",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "7px",
+        "padding": "18px 0px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "fill"
+        }
+      },
+      "layout_PBVS6Z": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 19.2,
+          "height": 12.23
+        }
+      },
+      "layout_G82BZ5": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 17.14,
+          "height": 12.33
+        }
+      },
+      "layout_B0FR30": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 27.33,
+          "height": 13
+        }
+      },
+      "fill_ZOK6MD": [
+        "#000000"
+      ],
+      "stroke_5OWRUD": {
+        "colors": [
+          "#FFFFFF"
+        ],
+        "strokeWeight": "1px"
+      },
+      "layout_DSSOEO": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 25,
+          "height": 13
+        }
+      },
+      "layout_TZ1CSP": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 26,
+          "y": 4.78
+        },
+        "dimensions": {
+          "width": 1.33,
+          "height": 4.08
+        }
+      },
+      "layout_1OXP8G": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 2,
+          "y": 2
+        },
+        "dimensions": {
+          "width": 21,
+          "height": 9
+        }
+      },
+      "layout_U518HI": {
+        "mode": "row",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "4px",
+        "padding": "0px 12px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_X8ZS7Q": {
+        "mode": "column",
+        "gap": "4px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "style_3B00FC": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 500,
+        "fontSize": 16,
+        "lineHeight": "1.375em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "fill_VXBTII": [
+        "#E3FFBB"
+      ],
+      "layout_UPGZAI": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "style_3292ZB": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 600,
+        "fontSize": 22,
+        "lineHeight": "1em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_H0UUP6": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "20px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_QPCD10": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 40,
+          "height": 40
+        }
+      },
+      "stroke_ZNDDXA": {
+        "colors": [
+          "#E3FFBB"
+        ],
+        "strokeWeight": "2px"
+      },
+      "layout_1LQPCM": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 10,
+          "y": 10
+        },
+        "dimensions": {
+          "width": 20,
+          "height": 20
+        }
+      },
+      "stroke_XP3IYE": {
+        "colors": [
+          "#222E29"
+        ],
+        "strokeWeight": "1px"
+      },
+      "fill_BTX01K": [
+        "#212422"
+      ],
+      "layout_1SYUUB": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 40,
+          "height": 40
+        }
+      },
+      "fill_XM4N8A": [
+        {
+          "type": "IMAGE",
+          "imageRef": "3bfb8ec29b83c594d1b5f4f61c1e68a757dd3407",
+          "scaleMode": "FILL"
+        },
+        {
+          "type": "IMAGE",
+          "imageRef": "0a711c2f04c33f8db88e4810537318afd456f833",
+          "scaleMode": "FILL"
+        }
+      ],
+      "layout_LBZG2D": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 1,
+          "y": 1
+        },
+        "dimensions": {
+          "width": 38,
+          "height": 57
+        }
+      },
+      "layout_JCI428": {
+        "mode": "column",
+        "alignItems": "center",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 369,
+          "height": 728
+        }
+      },
+      "layout_8J4I0B": {
+        "mode": "column",
+        "alignSelf": "stretch",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "fill_W6XTB5": [
+        "#141C18"
+      ],
+      "layout_3SNAL2": {
+        "mode": "row",
+        "justifyContent": "space-between",
+        "gap": "12px",
+        "padding": "12px 12px 8px 8px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "dimensions": {
+          "width": 369
+        }
+      },
+      "layout_3YL337": {
+        "mode": "row",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "dimensions": {
+          "width": 335
+        }
+      },
+      "layout_OG34AM": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 20,
+          "height": 20
+        }
+      },
+      "stroke_VDTMYP": {
+        "colors": [
+          "#E3FFBB"
+        ],
+        "strokeWeight": "1.5px"
+      },
+      "layout_RC8Q7O": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 1.67,
+          "y": 1.67
+        },
+        "dimensions": {
+          "width": 16.67,
+          "height": 16.67
+        }
+      },
+      "layout_XFBBWI": {
+        "mode": "column",
+        "gap": "12px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "style_ESDZG8": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 400,
+        "fontSize": 14,
+        "lineHeight": "1.5714285714285714em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_J6XCXH": {
+        "mode": "row",
+        "gap": "4px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "fill_7FLTCE": [
+        "#4D5753"
+      ],
+      "layout_WVJXHH": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "4px",
+        "padding": "6px 8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "style_5FCWDD": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 300,
+        "fontSize": 10,
+        "lineHeight": "2.2em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_CTX596": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 12,
+          "height": 12
+        }
+      },
+      "stroke_H9K4LD": {
+        "colors": [
+          "#FFFFFF"
+        ],
+        "strokeWeight": "2px"
+      },
+      "layout_KI30SV": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 4.5,
+          "y": 3
+        },
+        "dimensions": {
+          "width": 3,
+          "height": 6
+        }
+      },
+      "layout_RH9QC5": {
+        "mode": "row",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "4px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "fill_3M0A9O": [
+        "#70897E"
+      ],
+      "layout_II3PW0": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 20,
+          "height": 4
+        }
+      },
+      "fill_LE6O6O": [
+        "#3D4C45"
+      ],
+      "layout_VNBKUW": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 4,
+          "height": 4
+        }
+      },
+      "fill_HQQC84": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "gradientHandlePositions": [
+            {
+              "x": 0.5,
+              "y": -3.0616171314629196e-17
+            },
+            {
+              "x": 0.5,
+              "y": 0.9999999999999999
+            },
+            {
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "hex": "#232523",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 1,
+              "color": {
+                "hex": "#1A1E1C",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "layout_OFT890": {
+        "mode": "row",
+        "alignSelf": "stretch",
+        "gap": "12px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_B3NUWS": {
+        "mode": "column",
+        "justifyContent": "space-between",
+        "alignSelf": "stretch",
+        "gap": "44px",
+        "padding": "12px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "fill"
+        }
+      },
+      "layout_LA7P0L": {
+        "mode": "row",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "52px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_M2AYS0": {
+        "mode": "column",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "style_9POCK0": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 500,
+        "fontSize": 10,
+        "lineHeight": "2.2em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "style_L6B6QM": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 600,
+        "fontSize": 16,
+        "lineHeight": "1.375em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "style_4DSBQV": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 300,
+        "fontSize": 12,
+        "lineHeight": "1.3999999364217122em",
+        "textAlignHorizontal": "RIGHT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_DTUTSO": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "10px",
+        "padding": "0px 0px 6px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "height": 28
+        }
+      },
+      "layout_VLG7ZJ": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "2px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "style_TWSEZC": {
+        "fontFamily": "Inknut Antiqua",
+        "fontWeight": 500,
+        "fontSize": 14,
+        "lineHeight": "1.5714285714285714em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "BOTTOM"
+      },
+      "style_6RRWWC": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 400,
+        "fontSize": 28,
+        "lineHeight": "0.7857142857142857em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_LNDOHK": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 22,
+          "height": 22
+        }
+      },
+      "layout_5AILIW": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 1.83,
+          "y": 4.58
+        },
+        "dimensions": {
+          "width": 18.33,
+          "height": 12.83
+        }
+      },
+      "layout_VZKLUV": {
+        "mode": "column",
+        "alignItems": "center",
+        "gap": "52px",
+        "padding": "12px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 55,
+          "height": 130
+        }
+      },
+      "layout_QWF1U7": {
+        "mode": "column",
+        "justifyContent": "center",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_QSYTHW": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 30,
+          "height": 30
+        }
+      },
+      "fill_ZKBAUY": [
+        "#F5FFF8"
+      ],
+      "stroke_WOBZEV": {
+        "colors": [
+          "#3D4C45"
+        ],
+        "strokeWeight": "1px"
+      },
+      "layout_VDZ2VG": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 30,
+          "height": 30
+        }
+      },
+      "layout_50474B": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 3.75,
+          "y": 3.75
+        },
+        "dimensions": {
+          "width": 22.5,
+          "height": 22.5
+        }
+      },
+      "layout_G5LHUP": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 4.22,
+          "y": 3.97
+        },
+        "dimensions": {
+          "width": 14.06,
+          "height": 14.06
+        }
+      },
+      "layout_12CSHV": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 14.06,
+          "height": 14.06
+        }
+      },
+      "layout_1EV36M": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0.62,
+          "y": 1.75
+        },
+        "dimensions": {
+          "width": 12.82,
+          "height": 10.68
+        }
+      },
+      "fill_YQIO08": [
+        "#F15A29"
+      ],
+      "layout_IMG3T5": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 1.89,
+          "y": 0.44
+        },
+        "dimensions": {
+          "width": 10.93,
+          "height": 10.24
+        }
+      },
+      "layout_HNNBIE": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 10.05,
+          "height": 10.14
+        }
+      },
+      "layout_MY03AL": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 4.92,
+          "y": 5.63
+        },
+        "dimensions": {
+          "width": 13.08,
+          "height": 11.25
+        }
+      },
+      "fill_6TGM2U": [
+        "#003874"
+      ],
+      "layout_SRS41A": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 13.08,
+          "height": 11.25
+        }
+      },
+      "fill_AMEX5N": [
+        "#ED1C24"
+      ],
+      "layout_DQ0GK6": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 5.74,
+          "y": 1.3
+        },
+        "dimensions": {
+          "width": 1.53,
+          "height": 8.73
+        }
+      },
+      "layout_NNAVFE": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 1.66,
+          "y": 2.68
+        },
+        "dimensions": {
+          "width": 9.79,
+          "height": 5.88
+        }
+      },
+      "fill_Q55SC3": [
+        "#1D201F"
+      ],
+      "style_J8IAWR": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 400,
+        "fontSize": 10,
+        "lineHeight": "2.2em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_8B1C5S": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 7.35,
+          "y": 11.4
+        },
+        "dimensions": {
+          "width": 14.41,
+          "height": 8.24
+        }
+      },
+      "layout_HALNJI": {
+        "mode": "column",
+        "alignItems": "center",
+        "gap": "8px",
+        "padding": "12px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "dimensions": {
+          "width": 369
+        }
+      },
+      "layout_Y569Q5": {
+        "mode": "column",
+        "alignSelf": "stretch",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_MIP6HB": {
+        "mode": "column",
+        "alignSelf": "stretch",
+        "gap": "12px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_U1F14L": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 29.14,
+          "height": 29.14
+        }
+      },
+      "layout_1PAAAT": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 29.14,
+          "height": 29.14
+        }
+      },
+      "layout_MIG0T7": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 9,
+          "y": 9
+        },
+        "dimensions": {
+          "width": 12,
+          "height": 12
+        }
+      },
+      "layout_RB9TQA": {
+        "mode": "row",
+        "justifyContent": "stretch",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "fill_PGSWAS": [
+        "#3B6768"
+      ],
+      "layout_WMYJZV": {
+        "mode": "row",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "gap": "10px",
+        "padding": "10px 0px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "style_RB16GZ": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 250,
+        "fontSize": 14,
+        "lineHeight": "1.5714285714285714em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_8BJW2D": {
+        "mode": "row",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "2px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_JXNMUI": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 204,
+          "height": 16
+        }
+      },
+      "style_5B0MBH": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 600,
+        "fontSize": 12,
+        "lineHeight": "1.8333333333333333em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_YP6WUP": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "height": 10
+        }
+      },
+      "layout_U7KF83": {
+        "mode": "column",
+        "justifyContent": "center",
+        "gap": "2px",
+        "padding": "8px 0px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "style_SEG149": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 400,
+        "fontSize": 12,
+        "lineHeight": "1.8333333333333333em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_V48VSJ": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "style_EVMV68": {
+        "fontFamily": "Inknut Antiqua",
+        "fontWeight": 500,
+        "fontSize": 10,
+        "lineHeight": "2.2em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "BOTTOM"
+      },
+      "style_0VCVJG": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 400,
+        "fontSize": 20,
+        "lineHeight": "1.1em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "fill_8L8FEP": [
+        "#2C8249"
+      ],
+      "layout_7TUFVN": {
+        "mode": "row",
+        "overflowScroll": [
+          "x"
+        ],
+        "alignSelf": "stretch",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_SR4XE3": {
+        "mode": "column",
+        "gap": "10px",
+        "padding": "18px 12px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_H41MGX": {
+        "mode": "row",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_FOWMCX": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 20,
+          "height": 20
+        }
+      },
+      "layout_3BF3Z4": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 4.67,
+          "y": 4.67
+        },
+        "dimensions": {
+          "width": 10.82,
+          "height": 10.67
+        }
+      },
+      "layout_YN2IF6": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 10.82,
+          "height": 10.67
+        }
+      },
+      "fill_40X1ZC": [
+        "#D2AB67"
+      ],
+      "layout_EKBS1C": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 3.32,
+          "y": 6.06
+        },
+        "dimensions": {
+          "width": 1.72,
+          "height": 4.57
+        }
+      },
+      "layout_WVKGHS": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "hug"
+        },
+        "dimensions": {
+          "width": 120
+        }
+      },
+      "layout_7TFNC8": {
+        "mode": "row",
+        "alignItems": "center",
+        "gap": "4px",
+        "padding": "6px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "layout_5WPUAL": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 7,
+          "height": 6
+        }
+      },
+      "layout_UGR2UQ": {
+        "mode": "row",
+        "justifyContent": "stretch",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gap": "7px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "fill_H8NP99": [
+        "#9AABA0"
+      ],
+      "layout_MDTHQE": {
+        "mode": "row",
+        "justifyContent": "flex-end",
+        "gap": "4px",
+        "sizing": {
+          "horizontal": "hug",
+          "vertical": "hug"
+        }
+      },
+      "fill_L0HSRZ": [
+        {
+          "type": "GRADIENT_LINEAR",
+          "gradientHandlePositions": [
+            {
+              "x": 0.5,
+              "y": -3.0616171314629196e-17
+            },
+            {
+              "x": 0.5,
+              "y": 0.9999999999999999
+            },
+            {
+              "x": 0,
+              "y": 0
+            }
+          ],
+          "gradientStops": [
+            {
+              "position": 0,
+              "color": {
+                "hex": "#2A4E2A",
+                "opacity": 1
+              }
+            },
+            {
+              "position": 1,
+              "color": {
+                "hex": "#011A01",
+                "opacity": 1
+              }
+            }
+          ]
+        }
+      ],
+      "effect_2OTEDR": {
+        "backdropFilter": "blur(82.70800018310547px)"
+      },
+      "layout_V7SWQ2": {
+        "mode": "column",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "gap": "10px",
+        "padding": "16px 12px 12px",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fill"
+        },
+        "dimensions": {
+          "width": 377
+        }
+      },
+      "layout_O31FWE": {
+        "mode": "column",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "layout_0SJ8NQ": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 64,
+          "height": 64
+        }
+      },
+      "layout_TPD4LZ": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 0,
+          "y": 0
+        },
+        "dimensions": {
+          "width": 64,
+          "height": 64
+        }
+      },
+      "layout_7H09E7": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 16,
+          "y": 16
+        },
+        "dimensions": {
+          "width": 32,
+          "height": 32
+        }
+      },
+      "layout_9JPND7": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 6.67,
+          "y": 2.67
+        },
+        "dimensions": {
+          "width": 18.67,
+          "height": 26.67
+        }
+      },
+      "layout_6U85W8": {
+        "mode": "row",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gap": "8px",
+        "sizing": {
+          "horizontal": "fill",
+          "vertical": "hug"
+        }
+      },
+      "style_XY60Y5": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 300,
+        "fontSize": 12,
+        "lineHeight": "1.8333333333333333em",
+        "textAlignHorizontal": "RIGHT",
+        "textAlignVertical": "TOP"
+      },
+      "fill_GS5OFF": [
+        "#2B2E26"
+      ],
+      "layout_R78FCO": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 1,
+          "height": 10
+        }
+      },
+      "style_Y9VS7K": {
+        "fontFamily": "Hiragino Sans",
+        "fontWeight": 300,
+        "fontSize": 12,
+        "lineHeight": "1.8333333333333333em",
+        "textAlignHorizontal": "LEFT",
+        "textAlignVertical": "TOP"
+      },
+      "layout_KVT2XA": {
+        "mode": "none",
+        "sizing": {
+          "horizontal": "fixed",
+          "vertical": "fixed"
+        },
+        "dimensions": {
+          "width": 24,
+          "height": 24
+        }
+      },
+      "layout_FNUWZ1": {
+        "mode": "none",
+        "locationRelativeToParent": {
+          "x": 2,
+          "y": 4
+        },
+        "dimensions": {
+          "width": 20,
+          "height": 16
+        }
+      }
+    }
+  }
+}
