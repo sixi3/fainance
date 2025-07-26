@@ -19,7 +19,7 @@ const HeaderSection = ({
             Hello, {userName}
           </Typography>
           <Typography variant="h2" color="textPrimary" weight="bold">
-            What's new
+            For You
           </Typography>
         </View>
 

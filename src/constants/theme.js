@@ -17,7 +17,7 @@ export const COLORS = {
   // Status colors
   success: '#2C8249',
   warning: '#F15A29',
-  error: '#F12929',
+  error: '#822C2C',
   
   // Financial colors
   currency: '#F15A29',
@@ -43,6 +43,8 @@ export const COLORS = {
   // Bank colors
   bankOfBaroda: '#F15A29',
   kotakBank: '#003874',
+  stocks: '#3B6768',
+  mutualFunds: '#683B60',
 };
 
 export const TYPOGRAPHY = {

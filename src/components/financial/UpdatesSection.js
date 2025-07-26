@@ -92,6 +92,7 @@ const UpdatesSection = ({ updates = [], onUpdatePress, onSourcePress }) => {
   const autoScrollTimerRef = useRef(null);
   const currentIndexRef = useRef(0);
   const haptics = useHaptics();
+  const isManualScrollRef = useRef(false);
 
   // Add these refs inside your UpdatesSection component, after the existing refs
   const leftPillStateRef = useRef({ visible: false, hapticTriggered: false });
@@ -142,6 +143,9 @@ const UpdatesSection = ({ updates = [], onUpdatePress, onSourcePress }) => {
       const nextIndex = (currentIndexRef.current + 1) % displayUpdates.length;
       currentIndexRef.current = nextIndex;
       
+      // Mark as auto-scroll to prevent haptics
+      isManualScrollRef.current = false;
+      
       flatListRef.current?.scrollToIndex({
         index: nextIndex,
         animated: true,
@@ -166,6 +170,8 @@ const UpdatesSection = ({ updates = [], onUpdatePress, onSourcePress }) => {
 
   const onScrollBeginDrag = useCallback(() => {
     stopAutoScroll();
+    // Mark as manual scroll to enable haptics
+    isManualScrollRef.current = true;
     // Reset both pill states
     leftPillStateRef.current = { visible: false, hapticTriggered: false };
     rightPillStateRef.current = { visible: false, hapticTriggered: false };
@@ -185,9 +191,11 @@ const UpdatesSection = ({ updates = [], onUpdatePress, onSourcePress }) => {
     }
   }, []);
 
-  // Add haptic feedback when scrolling to snap points
+  // Add haptic feedback when scrolling to snap points (only for manual scroll)
   const onMomentumScrollEnd = useCallback(() => {
-    haptics.selection();
+    if (isManualScrollRef.current) {
+      haptics.selection();
+    }
   }, [haptics]);
 
   const viewabilityConfig = {
@@ -200,6 +208,9 @@ const UpdatesSection = ({ updates = [], onUpdatePress, onSourcePress }) => {
 
   // Extract pill logic for better readability
   const checkPillHaptics = useCallback((offset) => {
+    // Only trigger haptics for manual scroll
+    if (!isManualScrollRef.current) return;
+
     // Left pill logic
     const leftShouldBeVisible = offset < -SCROLL_CONFIG.PILL_WIDTH;
     if (leftShouldBeVisible && !leftPillStateRef.current.visible) {

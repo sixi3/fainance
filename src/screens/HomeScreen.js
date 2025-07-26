@@ -1,36 +1,39 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, StyleSheet, ScrollView, SafeAreaView, Dimensions } from 'react-native';
 import { COLORS, SPACING, DEVICE } from '../constants/theme';
 import HeaderSection from '../components/layout/HeaderSection';
 import UpdatesSection from '../components/financial/UpdatesSection';
 import BankBalanceSection from '../components/financial/BankBalanceSection';
+import InvestmentSection from '../components/financial/InvestmentSection';
 
 const HomeScreen = () => {
   const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
   
-  const handleNotificationPress = () => {
+  // Make all handlers stable with useCallback to prevent unnecessary re-renders
+  const handleNotificationPress = useCallback(() => {
     console.log('Notification pressed');
-  };
+  }, []);
 
-  const handleProfilePress = () => {
+  const handleProfilePress = useCallback(() => {
     console.log('Profile pressed');
-  };
+  }, []);
 
-  const handleUpdatePress = (update) => {
+  const handleUpdatePress = useCallback((update) => {
     console.log('Update pressed:', update);
-  };
+  }, []);
 
-  const handleSourcePress = (source) => {
+  const handleSourcePress = useCallback((source) => {
     console.log('Source pressed:', source);
-  };
+  }, []);
 
-  const handleBalanceToggle = (isVisible) => {
-    console.log('Balance visibility toggled:', isVisible);
-  };
+  // This was causing the BankBalanceSection to re-render
+  const handleBalanceToggle = useCallback((isVisible) => {
+    console.log('HomeScreen: Balance visibility toggled:', isVisible);
+  }, []);
 
-  const handleBankPress = (bank) => {
-    console.log('Bank pressed:', bank);
-  };
+  const handleBankPress = useCallback((bank) => {
+    console.log('HomeScreen: Bank pressed:', bank);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,8 +44,6 @@ const HomeScreen = () => {
           onNotificationPress={handleNotificationPress}
           onProfilePress={handleProfilePress}
         />
-        
-
 
         {/* Main Content */}
         <ScrollView
@@ -66,20 +67,9 @@ const HomeScreen = () => {
             />
           </View>
 
-          {/* Placeholder for Investment Section */}
-          <View style={[styles.section, styles.sectionWithPadding]}>
-            <View style={styles.placeholderCard}>
-              <View style={styles.placeholderContent}>
-                <View style={styles.placeholderTitle}>
-                  <View style={styles.placeholderText} />
-                  <View style={styles.placeholderText} />
-                </View>
-                <View style={styles.placeholderProgress}>
-                  <View style={styles.placeholderProgressBar} />
-                  <View style={styles.placeholderProgressText} />
-                </View>
-              </View>
-            </View>
+          {/* Investment Section */}
+          <View style={styles.section}>
+            <InvestmentSection />
           </View>
 
           {/* Placeholder for Voice Assistant */}
@@ -125,45 +115,7 @@ const styles = StyleSheet.create({
   sectionWithPadding: {
     paddingHorizontal: SPACING.sm,
   },
-  placeholderCard: {
-    backgroundColor: COLORS.surface,
-    borderColor: COLORS.border,
-    borderWidth: 1,
-    borderRadius: 16,
-    padding: SPACING.md,
-    minHeight: 200,
-  },
-  placeholderContent: {
-    gap: SPACING.md,
-  },
-  placeholderTitle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  placeholderText: {
-    width: 80,
-    height: 16,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 8,
-  },
-  placeholderProgress: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: SPACING.xs,
-  },
-  placeholderProgressBar: {
-    flex: 1,
-    height: 16,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 8,
-  },
-  placeholderProgressText: {
-    width: 30,
-    height: 12,
-    backgroundColor: COLORS.secondary,
-    borderRadius: 6,
-  },
+
   assistantPlaceholder: {
     backgroundColor: COLORS.assistantGradient.from,
     borderColor: COLORS.border,

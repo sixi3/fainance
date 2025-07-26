@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback, memo } from 'react';
+import React, { useState, useRef, useCallback, memo, useEffect } from 'react';
 import { View, StyleSheet, Pressable, Image, Animated } from 'react-native';
 import { Eye } from 'lucide-react-native';
 import { COLORS, SPACING, BORDER_RADIUS, ANIMATIONS } from '../../constants/theme';
@@ -6,194 +6,202 @@ import Typography from '../common/Typography';
 import Card from '../common/Card';
 import { useHaptics } from '../../hooks/useHaptics';
 
-// Separate memoized component for bank icons with debug logging
-const BankIcons = memo(({ banks, onBankPress }) => {
-  // Debug: Log when this component re-renders
-  console.log('BankIcons re-rendered');
+// Static bank data outside component
+const BANK_DATA = [
+  {
+    id: 'bob',
+    name: 'Bank of Baroda',
+    icon: require('../../../assets/BoB.png'),
+    balance: 15000000,
+  },
+  {
+    id: 'kotak',
+    name: 'Kotak Bank', 
+    icon: require('../../../assets/KOTAK.png'),
+    balance: 129230392.86,
+  },
+];
 
-  const renderBankIcon = useCallback((bank) => (
-    <Pressable
-      key={bank.id}
-      style={styles.bankIconContainer}
-      onPress={() => onBankPress?.(bank)}
-    >
-      <View style={[styles.bankIconCircle, { borderColor: COLORS.primary }]}>
-        <Image 
-          source={bank.icon} 
-          style={styles.bankIconImage}
-          resizeMode="contain"
-        />
-      </View>
-    </Pressable>
-  ), [onBankPress]);
+// Static constants to prevent recreation
+const HIDDEN_BALANCE = '⛬ ⛬ ⛬ ⛬ ⛬ ⛬ ⛬ ⛬';
 
-  return (
-    <View style={styles.bankIconsContainer}>
-      <View style={styles.bankIcons}>
-        {banks.map(renderBankIcon)}
-        <View style={styles.bankIconContainer}>
-          <View style={[styles.bankIconCircle, { backgroundColor: COLORS.surfaceSecondary }]}>
-            <Typography variant="caption" color="textPrimary" weight="regular">
-              +2
-            </Typography>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-}, (prevProps, nextProps) => {
-  // Custom comparison function for memo
-  const banksChanged = prevProps.banks !== nextProps.banks;
-  const onBankPressChanged = prevProps.onBankPress !== nextProps.onBankPress;
-  
-  console.log('BankIcons memo comparison:', {
-    banksChanged,
-    onBankPressChanged,
-    prevBanks: prevProps.banks?.length || 'undefined',
-    nextBanks: nextProps.banks?.length || 'undefined',
-    shouldRerender: banksChanged || onBankPressChanged
-  });
-  
-  // Return true if props are equal (don't re-render), false if they've changed (re-render)
-  return !banksChanged && !onBankPressChanged;
-});
-
-const BankBalanceSection = ({ 
-  balance = 279230392.86,
-  currency = 'INR',
-  lastUpdated = '2 mins ago',
-  banks = [],
-  onBalanceToggle,
-  onBankPress 
+// Move BalanceDisplay outside the main component and memoize it
+const BalanceDisplay = memo(({ 
+  balance, 
+  currency, 
+  lastUpdated, 
+  isVisible, 
+  onToggle 
 }) => {
-  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const { impact } = useHaptics();
+  const isAnimatingRef = useRef(false);
+  const [displayText, setDisplayText] = useState('');
 
-  // Create completely stable banks reference
-  const defaultBanksRef = useRef([
-    {
-      id: '1',
-      name: 'Bank of Baroda',
-      icon: require('../../../assets/BoB.png'),
-      color: COLORS.bankOfBaroda,
-      balance: 15000000,
-    },
-    {
-      id: '2',
-      name: 'Kotak Bank',
-      icon: require('../../../assets/KOTAK.png'),
-      color: COLORS.kotakBank,
-      balance: 129230392.86,
-    },
-  ]);
-
-  // Create a stable displayBanks that only changes when banks prop actually changes content
-  const displayBanksRef = useRef(banks.length > 0 ? banks : defaultBanksRef.current);
-  
-  // Only update if banks content has actually changed
-  const currentBanksString = JSON.stringify(banks);
-  const lastBanksString = useRef(currentBanksString);
-  
-  if (lastBanksString.current !== currentBanksString) {
-    console.log('Banks content changed, updating displayBanks');
-    displayBanksRef.current = banks.length > 0 ? banks : defaultBanksRef.current;
-    lastBanksString.current = currentBanksString;
-  }
-
-  const formatCurrency = useCallback((amount) => {
+  const formatBalance = useCallback((amount) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: currency,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(amount);
+    }).format(amount).replace(/[^\d.,]/g, '');
   }, [currency]);
 
-  const formattedBalance = useMemo(() => {
-    const formatted = formatCurrency(balance);
-    return formatted.replace(/[^\d.,]/g, '');
-  }, [balance, formatCurrency]);
+  // Initialize display text - removed hiddenBalance from dependencies
+  useEffect(() => {
+    setDisplayText(isVisible ? formatBalance(balance) : HIDDEN_BALANCE);
+  }, [balance, formatBalance, isVisible]);
 
-  const hiddenBalance = '⛬ ⛬ ⛬ ⛬ ⛬ ⛬ ⛬ ⛬';
-
-  const handleBalanceToggle = useCallback(() => {
-    // Trigger haptic feedback
+  const handleToggle = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    
+    isAnimatingRef.current = true;
     impact.light();
     
-    // Change state immediately
-    const newVisibility = !isBalanceVisible;
-    setIsBalanceVisible(newVisibility);
-    onBalanceToggle?.(newVisibility);
-    
-    // Animate the transition
-    Animated.sequence([
-      Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: ANIMATIONS.duration.fast / 2,
-        useNativeDriver: true,
-      }),
+    // Start fade out
+    Animated.timing(fadeAnim, {
+      toValue: 0,
+      duration: 120,
+      useNativeDriver: true,
+    }).start(() => {
+      // Change text when completely faded out
+      const newText = isVisible ? HIDDEN_BALANCE : formatBalance(balance);
+      setDisplayText(newText);
+      onToggle();
+      
+      // Fade back in with new text
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: ANIMATIONS.duration.fast / 2,
+        duration: 120,
         useNativeDriver: true,
-      }),
-    ]).start();
-  }, [isBalanceVisible, impact, onBalanceToggle, fadeAnim]);
-
-  // Memoize onBankPress to prevent BankIcons from re-rendering
-  // Use useRef to ensure the callback is completely stable
-  const memoizedOnBankPress = useRef(onBankPress);
-  memoizedOnBankPress.current = onBankPress;
-  
-  const stableOnBankPress = useCallback((bank) => {
-    memoizedOnBankPress.current?.(bank);
-  }, []); // Empty dependency array - never changes
+      }).start(() => {
+        isAnimatingRef.current = false;
+      });
+    });
+  }, [onToggle, impact, fadeAnim, isVisible, formatBalance, balance]);
 
   return (
-    <Card variant="gradient" style={styles.container} contentStyle={{ paddingVertical: 0, paddingHorizontal: 0 }}>
-      <View style={styles.content}>
-        <View style={styles.balanceContainer}>
-          <View style={styles.balanceHeader}>
-            <View style={styles.balanceTitleContainer}>
-              <Typography variant="caption" color="textSecondary" weight="medium">
-                Bank
-              </Typography>
-              <Typography variant="h4" color="textPrimary" weight="bold" style={{ marginTop: -2 }}>
-                Balance
+    <View style={styles.balanceSection}>
+      <View style={styles.balanceHeader}>
+        <View>
+          <Typography variant="caption" color="textSecondary" weight="medium">
+            Bank
+          </Typography>
+          <Typography variant="h4" color="textPrimary" weight="bold" style={{ marginTop: -2 }}>
+            Balance
+          </Typography>
+        </View>
+        <Typography variant="caption" color="secondary" weight="light">
+          Updates {lastUpdated}
+        </Typography>
+      </View>
+
+      <View style={styles.balanceRow}>
+        <Animated.View style={[styles.balanceText, { opacity: fadeAnim }]}>
+          <Typography variant="currency" color="textSecondary" size={14}>
+            ₹
+          </Typography>
+          <Typography variant="h2" color="textSecondary" weight="bold">
+            {displayText}
+          </Typography>
+        </Animated.View>
+        
+        <Pressable style={styles.eyeButton} onPress={handleToggle}>
+          <Eye size={18} color={COLORS.textPrimary} strokeWidth={2} />
+        </Pressable>
+      </View>
+    </View>
+  );
+});
+
+// Alternative approach: Use a class component with aggressive prevention
+class BankIconsDisplay extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log('BankIconsDisplay constructed');
+  }
+
+  shouldComponentUpdate() {
+    console.log('BankIconsDisplay shouldComponentUpdate called - blocking update');
+    return false; // Never update
+  }
+
+  componentDidMount() {
+    console.log('BankIconsDisplay mounted');
+  }
+
+  handleBankPress = (bank) => {
+    console.log('Bank pressed:', bank.name);
+  };
+
+  render() {
+    console.log('BankIconsDisplay rendered');
+    
+    return (
+      <View style={styles.bankIconsSection}>
+        <View style={styles.bankIconsList}>
+          {BANK_DATA.map((bank) => (
+            <View key={bank.id} style={styles.bankIconWrapper}>
+              <Pressable
+                style={styles.bankIconButton}
+                onPress={() => this.handleBankPress(bank)}
+              >
+                <View style={styles.bankIconCircle}>
+                  <Image 
+                    source={bank.icon}
+                    style={styles.bankIcon}
+                    resizeMode="contain"
+                  />
+                </View>
+              </Pressable>
+            </View>
+          ))}
+          
+          <View style={styles.bankIconWrapper}>
+            <View style={[styles.bankIconCircle, styles.moreIconCircle]}>
+              <Typography variant="caption" color="textPrimary" weight="regular">
+                +2
               </Typography>
             </View>
-            
-            <Typography variant="caption" color="secondary" weight="light">
-              Updates {lastUpdated}
-            </Typography>
-          </View>
-
-          <View style={styles.balanceAmountContainer}>
-            <Animated.View 
-              style={[
-                styles.balanceAmountTextContainer,
-                { opacity: fadeAnim }
-              ]}
-            >
-              <Typography variant="currency" color="textSecondary" size={14}>
-                ₹
-              </Typography>
-              <Typography variant="h2" color="textSecondary" weight="bold">
-                {isBalanceVisible ? formattedBalance : hiddenBalance}
-              </Typography>
-            </Animated.View>
-            
-            <Pressable
-              style={styles.eyeButton}
-              onPress={handleBalanceToggle}
-            >
-              <Eye size={18} color={COLORS.textPrimary} strokeWidth={2} />
-            </Pressable>
           </View>
         </View>
+      </View>
+    );
+  }
+}
 
-        <BankIcons banks={displayBanksRef.current} onBankPress={stableOnBankPress} />
+// Main Combined Component
+const BankBalanceSection = ({ 
+  balance = 279230392.86,
+  currency = 'INR',
+  lastUpdated = '2 mins ago',
+  onBalanceToggle,
+  onBankPress 
+}) => {
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
+  const handleToggle = useCallback(() => {
+    const newVisibility = !isBalanceVisible;
+    setIsBalanceVisible(newVisibility);
+    console.log('Balance visibility toggled:', newVisibility);
+    onBalanceToggle?.(newVisibility);
+  }, [isBalanceVisible, onBalanceToggle]);
+
+  return (
+    <Card 
+      variant="gradient" 
+      style={styles.container} 
+      contentStyle={{ paddingVertical: 0, paddingHorizontal: 0 }}
+    >
+      <View style={styles.content}>
+        <BalanceDisplay
+          balance={balance}
+          currency={currency}
+          lastUpdated={lastUpdated}
+          isVisible={isBalanceVisible}
+          onToggle={handleToggle}
+        />
+        <BankIconsDisplay />
       </View>
     </Card>
   );
@@ -210,7 +218,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'stretch',
   },
-  balanceContainer: {
+  
+  // Balance Section Styles
+  balanceSection: {
     flex: 1,
     justifyContent: 'space-between',
     gap: 44,
@@ -221,13 +231,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  
-  balanceAmountContainer: {
+  balanceRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
   },
-  balanceAmountTextContainer: {
+  balanceText: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 2,
@@ -239,7 +248,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bankIconsContainer: {
+  
+  // Bank Icons Section Styles
+  bankIconsSection: {
     width: 55,
     backgroundColor: COLORS.dot,
     borderColor: COLORS.border,
@@ -248,27 +259,36 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: BORDER_RADIUS.lg,
     padding: SPACING.md,
   },
-  bankIcons: {
+  bankIconsList: {
     flex: 1,
     justifyContent: 'center',
     gap: SPACING.sm,
   },
-  bankIconContainer: {
+  bankIconWrapper: {
     alignItems: 'center',
+  },
+  bankIconButton: {
+    width: 30,
+    height: 30,
   },
   bankIconCircle: {
     width: 30,
     height: 30,
     borderRadius: 15,
     borderWidth: 1,
+    borderColor: COLORS.primary,
     backgroundColor: COLORS.textPrimary,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  bankIconImage: {
+  moreIconCircle: {
+    backgroundColor: COLORS.surfaceSecondary,
+    borderColor: 'transparent',
+  },
+  bankIcon: {
     width: 18,
     height: 18,
   },
 });
 
-export default BankBalanceSection; 
+export default BankBalanceSection;
