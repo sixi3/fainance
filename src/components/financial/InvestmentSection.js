@@ -140,11 +140,12 @@ const mutualFundData = [
   },
 ];
 
-const InvestmentCard = ({ item, type }) => {
-  const formatCurrency = (amount) => {
-    return `₹${amount.toLocaleString('en-IN', { maximumFractionDigits: 1 })}`;
-  };
+// Utility function for currency formatting
+const formatCurrency = (amount) => {
+  return `${amount.toLocaleString('en-IN', { maximumFractionDigits: 1 })}`;
+};
 
+const InvestmentCard = ({ item, type }) => {
   return (
     <View style={styles.cardWrapper}>
       <Card variant="surface" style={styles.investmentItemCard}>
@@ -220,6 +221,10 @@ const InvestmentSection = () => {
   
   // Card list entrance animation
   const cardListAnim = useRef(new Animated.Value(0)).current;
+  
+  // Net value animations
+  const valueAnim = useRef(new Animated.Value(0)).current;
+  const percentageAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.spring(tabAnim, {
@@ -236,6 +241,21 @@ const InvestmentSection = () => {
   ), [activeTab]);
 
   const currentData = activeTab === 'stocks' ? stockData : mutualFundData;
+
+  // Calculate net values for current tab
+  const netValues = useMemo(() => {
+    const totalInvested = currentData.reduce((sum, item) => sum + item.invested, 0);
+    const totalCurrent = currentData.reduce((sum, item) => sum + item.current, 0);
+    const totalChange = ((totalCurrent - totalInvested) / totalInvested) * 100;
+    const isPositive = totalChange >= 0;
+    
+    return {
+      invested: totalInvested,
+      current: totalCurrent,
+      change: Math.abs(totalChange),
+      isPositive
+    };
+  }, [currentData]);
 
   // Calculate max scroll offset for current data
   const maxScrollOffset = useMemo(() => {
@@ -303,6 +323,27 @@ const InvestmentSection = () => {
     scrollX.value = 0;
   }, [activeTab]);
 
+  // Initial animation on component mount
+  useEffect(() => {
+    // Small delay to ensure component is fully mounted
+    const timer = setTimeout(() => {
+      // Animate in with spring animation on first load
+      Animated.spring(cardListAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        damping: 20,
+        stiffness: 300,
+        mass: 0.8,
+      }).start((finished) => {
+        if (finished) {
+          console.log('Card list animation completed');
+        }
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array for initial load only
+
   // Card list entrance animation when tab changes
   useEffect(() => {
     // Reset animation to start position
@@ -317,6 +358,67 @@ const InvestmentSection = () => {
       mass: 0.8,
     }).start();
   }, [activeTab]);
+
+  // Initial net value animations on component mount
+  useEffect(() => {
+    // Small delay to ensure component is fully mounted
+    const timer = setTimeout(() => {
+      // Animate value with spring animation
+      Animated.spring(valueAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        damping: 25,
+        stiffness: 350,
+        mass: 0.8,
+      }).start((finished) => {
+        if (finished) {
+          console.log('Value animation completed');
+        }
+      });
+      
+      // Animate percentage with slight delay
+      Animated.spring(percentageAnim, {
+        toValue: 1,
+        useNativeDriver: true,
+        damping: 25,
+        stiffness: 350,
+        mass: 0.8,
+        delay: 100,
+      }).start((finished) => {
+        if (finished) {
+          console.log('Percentage animation completed');
+        }
+      });
+    }, 150); // Slightly longer delay for net values
+
+    return () => clearTimeout(timer);
+  }, []); // Empty dependency array for initial load only
+
+  // Net value animations when tab changes
+  useEffect(() => {
+    // Reset animations to start position
+    valueAnim.setValue(0);
+    percentageAnim.setValue(0);
+    
+    // Animate value with spring animation
+    Animated.spring(valueAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+      damping: 25,
+      stiffness: 350,
+      mass: 0.8,
+    }).start();
+    
+    // Animate percentage with slight delay
+    Animated.spring(percentageAnim, {
+      toValue: 1,
+      useNativeDriver: true,
+      damping: 25,
+      stiffness: 350,
+      mass: 0.8,
+      delay: 100,
+    }).start();
+  }, [activeTab, netValues]);
 
   // --- On scroll release, switch tab if ready ---
   const onScrollEndDrag = useCallback(() => {
@@ -479,7 +581,7 @@ const InvestmentSection = () => {
             <View style={styles.tabContent}>
               <Typography
                 variant="body"
-                color={activeTab === 'stocks' ? 'textPrimary' : 'secondary'}
+                color={activeTab === 'stocks' ? 'textPrimary' : '#f4f4f4'}
                 weight={activeTab === 'stocks' ? 'bold' : 'light'}
               >
                 Stock Holdings
@@ -497,13 +599,67 @@ const InvestmentSection = () => {
             <View style={styles.tabContent}>
               <Typography
                 variant="body"
-                color={activeTab === 'mutualFunds' ? 'textPrimary' : 'secondary'}
+                color={activeTab === 'mutualFunds' ? 'textPrimary' : '#f4f4f4'}
                 weight={activeTab === 'mutualFunds' ? 'bold' : 'light'}
               >
                 Mutual Funds
               </Typography>
             </View>
           </TouchableOpacity>
+        </View>
+
+        {/* Net Values Section */}
+        <View style={styles.netValuesContainer}>
+          <View style={styles.netValuesContent}>
+            <Typography variant="bodySmall" color="textSecondary" weight="medium">
+              Total Value
+            </Typography>
+            <View style={styles.valueAndBadgeContainer}>
+              <Animated.View 
+                style={[
+                  styles.balanceText,
+                  {
+                    opacity: valueAnim,
+                    transform: [{
+                      translateY: valueAnim.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [20, 0],
+                      })
+                    }]
+                  }
+                ]}
+              >
+                <Typography variant="currency" color="textSecondary" size={14}>
+                  ₹
+                </Typography>
+                <Typography variant="h3" color="textPrimary" weight="bold">
+                  {formatCurrency(netValues.current)}
+                </Typography>
+              </Animated.View>
+              <Animated.View
+                style={{
+                  opacity: percentageAnim,
+                  transform: [{
+                    translateY: percentageAnim.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [20, 0],
+                    })
+                  }]
+                }}
+              >
+                <Typography
+                  variant="body"
+                  style={{
+                    color: netValues.isPositive ? COLORS.success : COLORS.error,
+                    marginLeft: SPACING.sm,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {netValues.isPositive ? '+' : '-'}{netValues.change.toFixed(1)}% in last 7 days
+                </Typography>
+              </Animated.View>
+            </View>
+          </View>
         </View>
 
         {/* Horizontal scrolling cards */}
@@ -596,6 +752,12 @@ const styles = StyleSheet.create({
     bottom: 2,
     borderRadius: BORDER_RADIUS.sm,
     zIndex: 0,
+    // Subtle elevation/shadow
+    shadowColor: COLORS.shadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.10,
+    shadowRadius: 4,
+    elevation: 3,
   },
   cardsContainer: {
     marginHorizontal: -SPACING.md, // Negative margin to offset the card padding
@@ -654,6 +816,7 @@ const styles = StyleSheet.create({
   },
   valueColumn: {
     gap: SPACING.xxs,
+    marginRight: SPACING['2xl'],
   },
   // Pill styles
   edgeIndicator: {
@@ -685,6 +848,30 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
+  },
+  netValuesContainer: {
+    paddingHorizontal: SPACING.xs,
+  },
+  netValuesContent: {
+    alignItems: 'flex-start',
+  },
+  valueAndBadgeContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  balanceText: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    flexShrink: 1,
+    marginRight: SPACING.sm,
+  },
+  netPercentageBadge: {
+    borderRadius: 20,
+    paddingHorizontal: SPACING.sm,
+    paddingVertical: SPACING.xxs,
+    minWidth: 50,
+    alignItems: 'center',
   },
 });
 
