@@ -23,6 +23,7 @@ const Card = ({
       case 'gradient':
         return {
           // Gradient will be applied via LinearGradient
+          backgroundColor: LinearGradient.colors([COLORS.surfaceGradient.from, COLORS.surfaceGradient.to])
         };
       case 'assistant':
         return {

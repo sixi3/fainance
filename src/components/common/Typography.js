@@ -49,6 +49,13 @@ const Typography = ({
           lineHeight: TYPOGRAPHY.sizes.lg * TYPOGRAPHY.lineHeights.normal,
           fontWeight: TYPOGRAPHY.weights[weight], // Use the weight prop instead of hardcoded semibold
         };
+      case 'h5':
+        return {
+          ...baseStyle,
+          fontSize: TYPOGRAPHY.sizes.base,
+          lineHeight: TYPOGRAPHY.sizes.base * TYPOGRAPHY.lineHeights.normal,
+          fontWeight: TYPOGRAPHY.weights[weight], // Use the weight prop instead of hardcoded semibold
+        };
       case 'body':
         return {
           ...baseStyle,

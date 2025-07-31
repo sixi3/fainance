@@ -3,10 +3,10 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Animated,
   ScrollView,
   Dimensions,
   Pressable,
+  Image,
 } from 'react-native';
 import Reanimated, { 
   useSharedValue, 
@@ -14,32 +14,43 @@ import Reanimated, {
   interpolate,
   Extrapolate,
   runOnJS,
-  useDerivedValue,
+  withSpring,
+  withTiming,
+  useAnimatedScrollHandler,
+  SharedValue,
+  withDelay,
 } from 'react-native-reanimated';
 import { ChevronRight } from 'lucide-react-native';
 import { COLORS, TYPOGRAPHY, SPACING, BORDER_RADIUS } from '../../constants/theme';
 import Typography from '../common/Typography';
 import Card from '../common/Card';
 import { useHaptics } from '../../hooks/useHaptics';
+import DistributionProgressBar from './DistributionProgressBar';
+
+// Import company logos
+const axisLogo = require('../../../assets/axis.png');
+const hdfcLogo = require('../../../assets/hdfc.png');
+const iciciLogo = require('../../../assets/icici.png');
+const infosysLogo = require('../../../assets/infosys.png');
+const kotakLogo = require('../../../assets/kotak.png');
+const relianceLogo = require('../../../assets/reliance.png');
+const sbiLogo = require('../../../assets/sbi.png');
+const tcsLogo = require('../../../assets/tcs.png');
 
 const TAB_COUNT = 2;
 const { width: screenWidth } = Dimensions.get('window');
-const CARD_WIDTH = screenWidth * 0.75; // 75% of screen width
+const CARD_WIDTH = screenWidth * 0.75;
 const CARD_SPACING = SPACING.sm;
+const PILL_WIDTH = 50;
+const OVERSCROLL_THRESHOLD = 20;
 
-// Pill configuration
-const PILL_CONFIG = {
-  PILL_WIDTH: 50,
-  OVERSCROLL_DEBOUNCE_MS: 300,
-};
-
-// Mock data for investment cards
+// Move data outside component to prevent recreation
 const stockData = [
   { 
     id: '1', 
     name: 'Reliance Industries', 
     symbol: 'RELIANCE', 
-    logo: '🏭', // Using emoji as placeholder for logo
+    logo: relianceLogo,
     invested: 14760.3,
     current: 16928.3,
     change: 9.8,
@@ -49,7 +60,7 @@ const stockData = [
     id: '2', 
     name: 'Tata Consultancy Services', 
     symbol: 'TCS', 
-    logo: '💻',
+    logo: tcsLogo,
     invested: 25430.5,
     current: 24567.2,
     change: -3.4,
@@ -59,7 +70,7 @@ const stockData = [
     id: '3', 
     name: 'HDFC Bank', 
     symbol: 'HDFCBANK', 
-    logo: '🏦',
+    logo: hdfcLogo,
     invested: 18900.0,
     current: 21345.7,
     change: 12.9,
@@ -69,7 +80,7 @@ const stockData = [
     id: '4', 
     name: 'Infosys', 
     symbol: 'INFY', 
-    logo: '🖥️',
+    logo: infosysLogo,
     invested: 12500.0,
     current: 13100.0,
     change: 4.8,
@@ -79,7 +90,7 @@ const stockData = [
     id: '5', 
     name: 'ICICI Bank', 
     symbol: 'ICICIBANK', 
-    logo: '🏛️',
+    logo: iciciLogo,
     invested: 9870.0,
     current: 9450.5,
     change: -4.3,
@@ -92,7 +103,7 @@ const mutualFundData = [
     id: '1', 
     name: 'Axis Bluechip Fund', 
     category: 'Large Cap', 
-    logo: '📊',
+    logo: axisLogo,
     invested: 50000.0,
     current: 58900.0,
     change: 17.8,
@@ -102,7 +113,7 @@ const mutualFundData = [
     id: '2', 
     name: 'HDFC Mid-Cap Opportunities', 
     category: 'Mid Cap', 
-    logo: '📈',
+    logo: hdfcLogo,
     invested: 35000.0,
     current: 42300.0,
     change: 20.9,
@@ -112,7 +123,7 @@ const mutualFundData = [
     id: '3', 
     name: 'SBI Small Cap Fund', 
     category: 'Small Cap', 
-    logo: '📉',
+    logo: sbiLogo,
     invested: 25000.0,
     current: 24100.0,
     change: -3.6,
@@ -122,7 +133,7 @@ const mutualFundData = [
     id: '4', 
     name: 'ICICI Prudential Equity & Debt', 
     category: 'Hybrid', 
-    logo: '⚖️',
+    logo: iciciLogo,
     invested: 40000.0,
     current: 43600.0,
     change: 9.0,
@@ -132,7 +143,7 @@ const mutualFundData = [
     id: '5', 
     name: 'Kotak Emerging Equity', 
     category: 'Mid Cap', 
-    logo: '🚀',
+    logo: kotakLogo,
     invested: 30000.0,
     current: 34500.0,
     change: 15.0,
@@ -140,28 +151,41 @@ const mutualFundData = [
   },
 ];
 
-// Utility function for currency formatting
+// Memoized utility function
 const formatCurrency = (amount) => {
   return `${amount.toLocaleString('en-IN', { maximumFractionDigits: 1 })}`;
 };
 
-const InvestmentCard = ({ item, type }) => {
+// Extract InvestmentCard as a proper memoized component
+const InvestmentCard = memo(({ item, type }) => {
+  const badgeStyle = useMemo(() => [
+    styles.percentageBadge,
+    { backgroundColor: item.isPositive ? COLORS.success : COLORS.error }
+  ], [item.isPositive]);
+
   return (
     <View style={styles.cardWrapper}>
       <Card variant="surface" style={styles.investmentItemCard}>
         <View style={styles.darkCardContent}>
-          {/* Header with logo, name and percentage badge */}
           <View style={styles.darkCardHeader}>
             <View style={styles.logoAndName}>
               <View style={styles.logoContainer}>
-                <Typography variant="bodySmall" color="textPrimary">
-                  {item.logo}
-                </Typography>
+                {typeof item.logo === 'string' ? (
+                  <Typography variant="bodySmall" color="textPrimary">
+                    {item.logo}
+                  </Typography>
+                ) : (
+                  <Image 
+                    source={item.logo} 
+                    style={styles.logoImage}
+                    resizeMode="contain"
+                  />
+                )}
               </View>
               <Typography 
-                variant="bodySmall" 
+                variant="h5" 
                 color="textPrimary" 
-                weight="medium" 
+                weight="semibold" 
                 numberOfLines={1}
                 style={styles.companyName}
               >
@@ -169,17 +193,13 @@ const InvestmentCard = ({ item, type }) => {
               </Typography>
             </View>
             
-            <View style={[
-              styles.percentageBadge,
-              { backgroundColor: item.isPositive ? COLORS.success : COLORS.error }
-            ]}>
+            <View style={badgeStyle}>
               <Typography variant="caption" color="textPrimary" weight="bold">
                 {item.isPositive ? '▲' : '▼'} {item.isPositive ? '+' : ''}{item.change}%
               </Typography>
             </View>
           </View>
           
-          {/* Investment values */}
           <View style={styles.valuesContainer}>
             <View style={styles.valueColumn}>
               <Typography variant="caption" color="textSecondary" weight="regular">
@@ -203,46 +223,102 @@ const InvestmentCard = ({ item, type }) => {
       </Card>
     </View>
   );
-};
+});
+
+InvestmentCard.displayName = 'InvestmentCard';
+
+// Extract edge indicators
+const EdgeIndicator = memo(({ 
+  position, 
+  scrollX, 
+  maxScrollOffset, 
+  onPress, 
+  visible,
+  label 
+}) => {
+  const animatedStyle = useAnimatedStyle(() => {
+    if (position === 'right') {
+      const opacity = interpolate(
+        scrollX.value,
+        [maxScrollOffset + PILL_WIDTH, maxScrollOffset + PILL_WIDTH + 20],
+        [0, 1],
+        Extrapolate.CLAMP
+      );
+      
+      const translateX = interpolate(
+        scrollX.value,
+        [maxScrollOffset + PILL_WIDTH, maxScrollOffset + PILL_WIDTH + 20],
+        [20, 0],
+        Extrapolate.CLAMP
+      );
+
+      return { opacity, transform: [{ translateX }] };
+    } else {
+      const opacity = interpolate(
+        scrollX.value,
+        [-PILL_WIDTH - 20, -PILL_WIDTH],
+        [1, 0],
+        Extrapolate.CLAMP
+      );
+      
+      const translateX = interpolate(
+        scrollX.value,
+        [-PILL_WIDTH - 20, -PILL_WIDTH],
+        [0, -20],
+        Extrapolate.CLAMP
+      );
+
+      return { opacity, transform: [{ translateX }] };
+    }
+  });
+
+  if (!visible) return null;
+
+  return (
+    <Reanimated.View 
+      style={[
+        styles.edgeIndicator, 
+        position === 'right' ? styles.rightIndicator : styles.leftIndicator,
+        animatedStyle
+      ]}
+    >
+      <Pressable onPress={onPress} style={styles.edgePillPressable}>
+        <View style={styles.edgePill}>
+          <Typography variant="caption" color="primary" weight="regular">
+            {label}
+          </Typography>
+        </View>
+      </Pressable>
+    </Reanimated.View>
+  );
+});
+
+EdgeIndicator.displayName = 'EdgeIndicator';
 
 const InvestmentSection = () => {
   const [activeTab, setActiveTab] = useState('stocks');
-  const tabAnim = useRef(new Animated.Value(0)).current;
   const [containerWidth, setContainerWidth] = useState(0);
   const scrollViewRef = useRef(null);
   
-  // Pill animation state
+  // Reanimated values
   const scrollX = useSharedValue(0);
+  const tabAnimation = useSharedValue(0);
+  const cardListOpacity = useSharedValue(0); // Start at 0 for fade in
+  const cardListTranslateY = useSharedValue(20); // Start at 20 for slide up
+  const valueOpacity = useSharedValue(0); // Start at 0 for fade in
+  const valueTranslateY = useSharedValue(20); // Start at 20 for slide up
+  const percentageOpacity = useSharedValue(0); // Start at 0 for fade in
+  const percentageTranslateY = useSharedValue(20); // Start at 20 for slide up
+  
   const haptics = useHaptics();
   
-  // Pill state refs
-  const rightPillStateRef = useRef({ visible: false, hapticTriggered: false, readyToSwitch: false });
-  const leftPillStateRef = useRef({ visible: false, hapticTriggered: false, readyToSwitch: false });
-  
-  // Card list entrance animation
-  const cardListAnim = useRef(new Animated.Value(0)).current;
-  
-  // Net value animations
-  const valueAnim = useRef(new Animated.Value(0)).current;
-  const percentageAnim = useRef(new Animated.Value(0)).current;
+  // Memoized data selection
+  const currentData = useMemo(
+    () => activeTab === 'stocks' ? stockData : mutualFundData,
+    [activeTab]
+  );
 
-  useEffect(() => {
-    Animated.spring(tabAnim, {
-      toValue: activeTab === 'stocks' ? 0 : 1,
-      useNativeDriver: true,
-      damping: 25,
-      stiffness: 250,
-      mass: 1,
-    }).start();
-  }, [activeTab]);
-
-  const renderInvestmentCard = useCallback((item) => (
-    <InvestmentCard key={item.id} item={item} type={activeTab} />
-  ), [activeTab]);
-
-  const currentData = activeTab === 'stocks' ? stockData : mutualFundData;
-
-  // Calculate net values for current tab
+  // Memoized calculations
   const netValues = useMemo(() => {
     const totalInvested = currentData.reduce((sum, item) => sum + item.invested, 0);
     const totalCurrent = currentData.reduce((sum, item) => sum + item.current, 0);
@@ -257,276 +333,227 @@ const InvestmentSection = () => {
     };
   }, [currentData]);
 
-  // Calculate max scroll offset for current data
+  const distributionPercentages = useMemo(() => {
+    const totalStockValue = stockData.reduce((sum, item) => sum + item.current, 0);
+    const totalMutualFundValue = mutualFundData.reduce((sum, item) => sum + item.current, 0);
+    const totalValue = totalStockValue + totalMutualFundValue;
+    
+    if (totalValue === 0) {
+      return { stockPercentage: 30, mutualFundPercentage: 70 };
+    }
+    
+    const stockPercentage = Math.round((totalStockValue / totalValue) * 100);
+    const mutualFundPercentage = 100 - stockPercentage;
+    
+    return { stockPercentage, mutualFundPercentage };
+  }, []); // Static data, no dependencies
+
   const maxScrollOffset = useMemo(() => {
     const totalWidth = currentData.length * (CARD_WIDTH + CARD_SPACING) - CARD_SPACING;
-    const containerWidth = screenWidth - (SPACING.md * 2); // Account for card padding
+    const containerWidth = screenWidth - (SPACING.md * 2);
     return Math.max(0, totalWidth - containerWidth);
   }, [currentData.length]);
 
-  // Scroll event handler
-  const onScroll = useCallback((event) => {
-    const offset = event.nativeEvent.contentOffset.x;
-    scrollX.value = offset;
-    
-    // Check pill visibility for stocks (right edge)
-    if (activeTab === 'stocks') {
-      const rightThreshold = maxScrollOffset + PILL_CONFIG.PILL_WIDTH;
-      const rightShouldBeVisible = offset > rightThreshold;
-      
-      if (rightShouldBeVisible && !rightPillStateRef.current.visible) {
-        rightPillStateRef.current.visible = true;
-        if (!rightPillStateRef.current.hapticTriggered) {
-          haptics.impact.light();
-          rightPillStateRef.current.hapticTriggered = true;
-        }
-      } else if (!rightShouldBeVisible) {
-        rightPillStateRef.current.visible = false;
-        rightPillStateRef.current.hapticTriggered = false;
-      }
-      
-      // Set readyToSwitch flag when past threshold
-      if (offset > rightThreshold + 20) { // Add small buffer for reliability
-        rightPillStateRef.current.readyToSwitch = true;
-      } else {
-        rightPillStateRef.current.readyToSwitch = false;
-      }
-    }
-    
-    // Check pill visibility for mutual funds (left edge)
-    if (activeTab === 'mutualFunds') {
-      const leftShouldBeVisible = offset < -PILL_CONFIG.PILL_WIDTH;
-      if (leftShouldBeVisible && !leftPillStateRef.current.visible) {
-        leftPillStateRef.current.visible = true;
-        if (!leftPillStateRef.current.hapticTriggered) {
-          haptics.impact.light();
-          leftPillStateRef.current.hapticTriggered = true;
-        }
-      } else if (!leftShouldBeVisible) {
-        leftPillStateRef.current.visible = false;
-        leftPillStateRef.current.hapticTriggered = false;
-      }
-      
-      // Set readyToSwitch flag when past threshold
-      if (offset < -PILL_CONFIG.PILL_WIDTH - 20) { // Add small buffer for reliability
-        leftPillStateRef.current.readyToSwitch = true;
-      } else {
-        leftPillStateRef.current.readyToSwitch = false;
-      }
-    }
-  }, [activeTab, maxScrollOffset, haptics]);
+  // Animated scroll handler
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollX.value = event.contentOffset.x;
+    },
+  });
 
-  // Reset pill states when tab changes
+  // Tab change handler
+  const handleTabChange = useCallback((newTab) => {
+    'worklet';
+    runOnJS(haptics.impact.light)();
+    runOnJS(setActiveTab)(newTab);
+  }, [haptics]);
+
+  // Edge indicator handlers
+  const handleRightPress = useCallback(() => {
+    haptics.impact.light();
+    scrollViewRef.current?.scrollToEnd({ animated: true });
+  }, [haptics]);
+
+  const handleLeftPress = useCallback(() => {
+    haptics.impact.light();
+    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
+  }, [haptics]);
+
+  // Scroll end handler
+  const handleScrollEndDrag = useCallback((event) => {
+    const offset = event.nativeEvent.contentOffset.x;
+    
+    if (activeTab === 'stocks' && offset > maxScrollOffset + PILL_WIDTH + OVERSCROLL_THRESHOLD) {
+      handleTabChange('mutualFunds');
+    } else if (activeTab === 'mutualFunds' && offset < -PILL_WIDTH - OVERSCROLL_THRESHOLD) {
+      handleTabChange('stocks');
+    }
+  }, [activeTab, maxScrollOffset, handleTabChange]);
+
+  // Animated styles
+  const tabIndicatorStyle = useAnimatedStyle(() => ({
+    width: containerWidth > 0 ? (containerWidth - 4) / TAB_COUNT : 0,
+    transform: [{
+      translateX: interpolate(
+        tabAnimation.value,
+        [0, 1],
+        [0, containerWidth > 0 ? (containerWidth - 4) / TAB_COUNT : 0]
+      )
+    }],
+    backgroundColor: activeTab === 'stocks' ? COLORS.stocks : COLORS.mutualFunds,
+  }));
+
+  const cardListStyle = useAnimatedStyle(() => ({
+    opacity: cardListOpacity.value,
+    transform: [{ translateY: cardListTranslateY.value }]
+  }));
+
+  const valueStyle = useAnimatedStyle(() => ({
+    opacity: valueOpacity.value,
+    transform: [{ translateY: valueTranslateY.value }]
+  }));
+
+  const percentageStyle = useAnimatedStyle(() => ({
+    opacity: percentageOpacity.value,
+    transform: [{ translateY: percentageTranslateY.value }]
+  }));
+
+  // Tab animation effect
   useEffect(() => {
-    rightPillStateRef.current = { visible: false, hapticTriggered: false, readyToSwitch: false };
-    leftPillStateRef.current = { visible: false, hapticTriggered: false, readyToSwitch: false };
-    scrollX.value = 0;
+    tabAnimation.value = withSpring(activeTab === 'stocks' ? 0 : 1, {
+      damping: 25,
+      stiffness: 250,
+      mass: 1,
+    });
   }, [activeTab]);
 
-  // Initial animation on component mount
+  // Track if component has mounted
+  const hasMountedRef = useRef(false);
+  
+  // Initial mount animation
   useEffect(() => {
-    // Small delay to ensure component is fully mounted
+    // Initial animation on component mount with staggered timing
     const timer = setTimeout(() => {
-      // Animate in with spring animation on first load
-      Animated.spring(cardListAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-        damping: 20,
-        stiffness: 300,
-        mass: 0.8,
-      }).start((finished) => {
-        if (finished) {
-          console.log('Card list animation completed');
-        }
+      // Net values animate first
+      valueOpacity.value = withSpring(1, { 
+        damping: 25, 
+        stiffness: 350, 
+        mass: 0.8 
       });
+      valueTranslateY.value = withSpring(0, { 
+        damping: 25, 
+        stiffness: 350, 
+        mass: 0.8 
+      });
+      
+      // Percentage badge with slight delay
+      percentageOpacity.value = withDelay(100, 
+        withSpring(1, { 
+          damping: 25, 
+          stiffness: 350, 
+          mass: 0.8 
+        })
+      );
+      percentageTranslateY.value = withDelay(100, 
+        withSpring(0, { 
+          damping: 25, 
+          stiffness: 350, 
+          mass: 0.8 
+        })
+      );
+      
+      // Card list animates last with longer delay
+      cardListOpacity.value = withDelay(150, 
+        withSpring(1, { 
+          damping: 20, 
+          stiffness: 300, 
+          mass: 0.8 
+        })
+      );
+      cardListTranslateY.value = withDelay(150, 
+        withSpring(0, { 
+          damping: 20, 
+          stiffness: 300, 
+          mass: 0.8 
+        })
+      );
+      
+      hasMountedRef.current = true;
     }, 100);
 
     return () => clearTimeout(timer);
-  }, []); // Empty dependency array for initial load only
+  }, []);
 
-  // Card list entrance animation when tab changes
+  // Tab change animations
   useEffect(() => {
-    // Reset animation to start position
-    cardListAnim.setValue(0);
+    // Skip animation on initial mount
+    if (!hasMountedRef.current) return;
     
-    // Animate in with spring animation
-    Animated.spring(cardListAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-      damping: 20,
-      stiffness: 300,
-      mass: 0.8,
-    }).start();
+    // Reset scroll
+    scrollX.value = 0;
+    scrollViewRef.current?.scrollTo({ x: 0, animated: false });
+    
+    // Quick fade out
+    cardListOpacity.value = withTiming(0, { duration: 150 });
+    valueOpacity.value = withTiming(0, { duration: 150 });
+    percentageOpacity.value = withTiming(0, { duration: 150 });
+    
+    // Then animate in with spring after fade out completes
+    setTimeout(() => {
+      // Reset positions
+      cardListTranslateY.value = 20;
+      valueTranslateY.value = 20;
+      percentageTranslateY.value = 20;
+      
+      // Animate net values first
+      valueOpacity.value = withSpring(1, { 
+        damping: 25, 
+        stiffness: 350, 
+        mass: 0.8 
+      });
+      valueTranslateY.value = withSpring(0, { 
+        damping: 25, 
+        stiffness: 350, 
+        mass: 0.8 
+      });
+      
+      // Percentage with slight delay
+      percentageOpacity.value = withDelay(50, 
+        withSpring(1, { 
+          damping: 25, 
+          stiffness: 350, 
+          mass: 0.8 
+        })
+      );
+      percentageTranslateY.value = withDelay(50, 
+        withSpring(0, { 
+          damping: 25, 
+          stiffness: 350, 
+          mass: 0.8 
+        })
+      );
+      
+      // Card list last
+      cardListOpacity.value = withDelay(100, 
+        withSpring(1, { 
+          damping: 20, 
+          stiffness: 300, 
+          mass: 0.8 
+        })
+      );
+      cardListTranslateY.value = withDelay(100, 
+        withSpring(0, { 
+          damping: 20, 
+          stiffness: 300, 
+          mass: 0.8 
+        })
+      );
+    }, 150);
   }, [activeTab]);
 
-  // Initial net value animations on component mount
-  useEffect(() => {
-    // Small delay to ensure component is fully mounted
-    const timer = setTimeout(() => {
-      // Animate value with spring animation
-      Animated.spring(valueAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-        damping: 25,
-        stiffness: 350,
-        mass: 0.8,
-      }).start((finished) => {
-        if (finished) {
-          console.log('Value animation completed');
-        }
-      });
-      
-      // Animate percentage with slight delay
-      Animated.spring(percentageAnim, {
-        toValue: 1,
-        useNativeDriver: true,
-        damping: 25,
-        stiffness: 350,
-        mass: 0.8,
-        delay: 100,
-      }).start((finished) => {
-        if (finished) {
-          console.log('Percentage animation completed');
-        }
-      });
-    }, 150); // Slightly longer delay for net values
-
-    return () => clearTimeout(timer);
-  }, []); // Empty dependency array for initial load only
-
-  // Net value animations when tab changes
-  useEffect(() => {
-    // Reset animations to start position
-    valueAnim.setValue(0);
-    percentageAnim.setValue(0);
-    
-    // Animate value with spring animation
-    Animated.spring(valueAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-      damping: 25,
-      stiffness: 350,
-      mass: 0.8,
-    }).start();
-    
-    // Animate percentage with slight delay
-    Animated.spring(percentageAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-      damping: 25,
-      stiffness: 350,
-      mass: 0.8,
-      delay: 100,
-    }).start();
-  }, [activeTab, netValues]);
-
-  // --- On scroll release, switch tab if ready ---
-  const onScrollEndDrag = useCallback(() => {
-    if (activeTab === 'stocks' && rightPillStateRef.current.readyToSwitch) {
-      haptics.impact.light();
-      setActiveTab('mutualFunds');
-      rightPillStateRef.current.readyToSwitch = false;
-    }
-    if (activeTab === 'mutualFunds' && leftPillStateRef.current.readyToSwitch) {
-      haptics.impact.light();
-      setActiveTab('stocks');
-      leftPillStateRef.current.readyToSwitch = false;
-    }
-  }, [activeTab, haptics]);
-
-  // Right Edge Indicator for Stocks
-  const RightEdgeIndicator = memo(() => {
-    const animatedStyle = useAnimatedStyle(() => {
-      const opacity = interpolate(
-        scrollX.value,
-        [maxScrollOffset + PILL_CONFIG.PILL_WIDTH, maxScrollOffset + PILL_CONFIG.PILL_WIDTH + 20],
-        [0, 1],
-        Extrapolate.CLAMP
-      );
-      
-      const translateX = interpolate(
-        scrollX.value,
-        [maxScrollOffset + PILL_CONFIG.PILL_WIDTH, maxScrollOffset + PILL_CONFIG.PILL_WIDTH + 20],
-        [20, 0],
-        Extrapolate.CLAMP
-      );
-
-      return {
-        opacity,
-        transform: [{ translateX }],
-      };
-    });
-
-    const handlePress = useCallback(() => {
-      haptics.impact.light();
-      // Scroll to the end of stocks
-      scrollViewRef.current?.scrollToEnd({ animated: true });
-    }, [haptics]);
-
-    if (activeTab !== 'stocks') return null;
-
-    return (
-      <Reanimated.View style={[styles.edgeIndicator, styles.rightIndicator, animatedStyle]}>
-        <Pressable
-          onPress={handlePress}
-          style={styles.edgePillPressable}
-        >
-          <View style={styles.edgePill}>
-            <Typography variant="caption" color="primary" weight="regular">
-              Next
-            </Typography>
-          </View>
-        </Pressable>
-      </Reanimated.View>
-    );
-  });
-
-  // Left Edge Indicator for Mutual Funds
-  const LeftEdgeIndicator = memo(() => {
-    const animatedStyle = useAnimatedStyle(() => {
-      const opacity = interpolate(
-        scrollX.value,
-        [-PILL_CONFIG.PILL_WIDTH - 20, -PILL_CONFIG.PILL_WIDTH],
-        [1, 0],
-        Extrapolate.CLAMP
-      );
-      
-      const translateX = interpolate(
-        scrollX.value,
-        [-PILL_CONFIG.PILL_WIDTH - 20, -PILL_CONFIG.PILL_WIDTH],
-        [0, -20],
-        Extrapolate.CLAMP
-      );
-
-      return {
-        opacity,
-        transform: [{ translateX }],
-      };
-    });
-
-    const handlePress = useCallback(() => {
-      haptics.impact.light();
-      // Scroll to the beginning of mutual funds
-      scrollViewRef.current?.scrollTo({ x: 0, animated: true });
-    }, [haptics]);
-
-    if (activeTab !== 'mutualFunds') return null;
-
-    return (
-      <Reanimated.View style={[styles.edgeIndicator, styles.leftIndicator, animatedStyle]}>
-        <Pressable
-          onPress={handlePress}
-          style={styles.edgePillPressable}
-        >
-          <View style={styles.edgePill}>
-            <Typography variant="caption" color="primary" weight="regular">
-              Previous
-            </Typography>
-          </View>
-        </Pressable>
-      </Reanimated.View>
-    );
-  });
+  const renderItem = useCallback((item) => (
+    <InvestmentCard key={item.id} item={item} type={activeTab} />
+  ), [activeTab]);
 
   return (
     <Card variant="gradient" style={styles.investmentCard}>
@@ -534,7 +561,7 @@ const InvestmentSection = () => {
         {/* Header */}
         <View style={styles.investmentHeader}>
           <View style={styles.investmentLabels}>
-            <Typography variant="caption" color="textSecondary" weight="medium" style={{ marginBottom: -4 }}>
+            <Typography variant="caption" color="textSecondary" weight="medium" style={styles.headerCaption}>
               Your
             </Typography>
             <Typography variant="h3" color="textPrimary" weight="bold">
@@ -546,36 +573,13 @@ const InvestmentSection = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Tabs with animated sliding indicator */}
-        <View
-          style={styles.tabContainer}
-          onLayout={e => {
-            const width = e.nativeEvent.layout.width;
-            setContainerWidth(width);
-          }}
-        >
-          <Animated.View
-            style={[
-              styles.tabIndicator,
-              {
-                width: containerWidth > 0 ? (containerWidth - 4) / TAB_COUNT : 0,
-                transform: [{
-                  translateX: tabAnim.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0, containerWidth > 0 ? (containerWidth - 4) / TAB_COUNT : 0],
-                  })
-                }],
-                backgroundColor: activeTab === 'stocks' ? COLORS.stocks : COLORS.mutualFunds,
-              },
-            ]}
-            pointerEvents="none"
-          />
+        {/* Tabs */}
+        <View style={styles.tabContainer} onLayout={e => setContainerWidth(e.nativeEvent.layout.width)}>
+          <Reanimated.View style={[styles.tabIndicator, tabIndicatorStyle]} pointerEvents="none" />
+          
           <TouchableOpacity
             style={styles.tabTouchable}
-            onPress={() => {
-              haptics.impact.light();
-              setActiveTab('stocks');
-            }}
+            onPress={() => handleTabChange('stocks')}
             activeOpacity={0.7}
           >
             <View style={styles.tabContent}>
@@ -588,12 +592,10 @@ const InvestmentSection = () => {
               </Typography>
             </View>
           </TouchableOpacity>
+          
           <TouchableOpacity
             style={styles.tabTouchable}
-            onPress={() => {
-              haptics.impact.light();
-              setActiveTab('mutualFunds');
-            }}
+            onPress={() => handleTabChange('mutualFunds')}
             activeOpacity={0.7}
           >
             <View style={styles.tabContent}>
@@ -608,45 +610,31 @@ const InvestmentSection = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Net Values Section */}
+        {/* Distribution Progress Bar */}
+        <View style={styles.distributionContainer}>
+          <DistributionProgressBar
+            stockPercentage={distributionPercentages.stockPercentage}
+            mutualFundPercentage={distributionPercentages.mutualFundPercentage}
+            activeTab={activeTab}
+          />
+        </View>
+
+        {/* Net Values */}
         <View style={styles.netValuesContainer}>
           <View style={styles.netValuesContent}>
             <Typography variant="bodySmall" color="textSecondary" weight="medium">
               Total Value
             </Typography>
             <View style={styles.valueAndBadgeContainer}>
-              <Animated.View 
-                style={[
-                  styles.balanceText,
-                  {
-                    opacity: valueAnim,
-                    transform: [{
-                      translateY: valueAnim.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: [20, 0],
-                      })
-                    }]
-                  }
-                ]}
-              >
+              <Reanimated.View style={[styles.balanceText, valueStyle]}>
                 <Typography variant="currency" color="textSecondary" size={14}>
                   ₹
                 </Typography>
                 <Typography variant="h3" color="textPrimary" weight="bold">
                   {formatCurrency(netValues.current)}
                 </Typography>
-              </Animated.View>
-              <Animated.View
-                style={{
-                  opacity: percentageAnim,
-                  transform: [{
-                    translateY: percentageAnim.interpolate({
-                      inputRange: [0, 1],
-                      outputRange: [20, 0],
-                    })
-                  }]
-                }}
-              >
+              </Reanimated.View>
+              <Reanimated.View style={percentageStyle}>
                 <Typography
                   variant="body"
                   style={{
@@ -657,28 +645,15 @@ const InvestmentSection = () => {
                 >
                   {netValues.isPositive ? '+' : '-'}{netValues.change.toFixed(1)}% in last 7 days
                 </Typography>
-              </Animated.View>
+              </Reanimated.View>
             </View>
           </View>
         </View>
 
-        {/* Horizontal scrolling cards */}
-        <Animated.View 
-          style={[
-            styles.cardsContainer,
-            {
-              opacity: cardListAnim,
-              transform: [{
-                translateY: cardListAnim.interpolate({
-                  inputRange: [0, 1],
-                  outputRange: [20, 0],
-                })
-              }]
-            }
-          ]}
-        >
+        {/* Cards List */}
+        <Reanimated.View style={[styles.cardsContainer, cardListStyle]}>
           <View style={styles.scrollContainer}>
-            <ScrollView
+            <Reanimated.ScrollView
               ref={scrollViewRef}
               horizontal
               showsHorizontalScrollIndicator={false}
@@ -687,16 +662,31 @@ const InvestmentSection = () => {
               decelerationRate="fast"
               bounces={true}
               scrollEventThrottle={16}
-              onScroll={onScroll}
-              onScrollEndDrag={onScrollEndDrag}
+              onScroll={scrollHandler}
+              onScrollEndDrag={handleScrollEndDrag}
             >
-              {currentData.map(renderInvestmentCard)}
-            </ScrollView>
+              {currentData.map(renderItem)}
+            </Reanimated.ScrollView>
             
-            <RightEdgeIndicator />
-            <LeftEdgeIndicator />
+            <EdgeIndicator 
+              position="right"
+              scrollX={scrollX}
+              maxScrollOffset={maxScrollOffset}
+              onPress={handleRightPress}
+              visible={activeTab === 'stocks'}
+              label="Next"
+            />
+            
+            <EdgeIndicator 
+              position="left"
+              scrollX={scrollX}
+              maxScrollOffset={maxScrollOffset}
+              onPress={handleLeftPress}
+              visible={activeTab === 'mutualFunds'}
+              label="Previous"
+            />
           </View>
-        </Animated.View>
+        </Reanimated.View>
       </View>
     </Card>
   );
@@ -705,7 +695,7 @@ const InvestmentSection = () => {
 const styles = StyleSheet.create({
   investmentCard: {
     marginHorizontal: SPACING.sm,
-    overflow: 'visible', // Allow content to extend beyond card bounds
+    overflow: 'visible',
   },
   investmentContent: {
     gap: SPACING.sm,
@@ -717,6 +707,9 @@ const styles = StyleSheet.create({
   },
   investmentLabels: {
     alignItems: 'flex-start',
+  },
+  headerCaption: {
+    marginBottom: -4,
   },
   chevronButton: {
     width: 29,
@@ -732,7 +725,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 2,
     position: 'relative',
-    marginBottom: SPACING.xs,
     overflow: 'hidden',
   },
   tabTouchable: {
@@ -752,7 +744,6 @@ const styles = StyleSheet.create({
     bottom: 2,
     borderRadius: BORDER_RADIUS.sm,
     zIndex: 0,
-    // Subtle elevation/shadow
     shadowColor: COLORS.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.10,
@@ -760,14 +751,13 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   cardsContainer: {
-    marginHorizontal: -SPACING.md, // Negative margin to offset the card padding
+    marginHorizontal: -SPACING.md,
   },
   scrollContainer: {
     position: 'relative',
   },
   cardsScrollContent: {
-    paddingHorizontal: SPACING.md, // Add padding to the scroll content
-    paddingRight: SPACING.md,
+    paddingHorizontal: SPACING.md,
   },
   cardWrapper: {
     width: CARD_WIDTH,
@@ -775,9 +765,12 @@ const styles = StyleSheet.create({
   },
   investmentItemCard: {
     width: '100%',
-    backgroundColor: COLORS.surface, // Dark background to match the design
+    backgroundColor: COLORS.surface,
     borderColor: COLORS.border,
     paddingHorizontal: SPACING.xs,
+  },
+  darkCardContent: {
+    // Empty - content styles
   },
   darkCardHeader: {
     flexDirection: 'row',
@@ -798,9 +791,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logoImage: {
+    width: 16,
+    height: 16,
+  },
   companyName: {
     flex: 1,
-    fontSize: 16,
   },
   percentageBadge: {
     borderRadius: 20,
@@ -818,11 +814,10 @@ const styles = StyleSheet.create({
     gap: SPACING.xxs,
     marginRight: SPACING['2xl'],
   },
-  // Pill styles
   edgeIndicator: {
     position: 'absolute',
     top: '50%',
-    marginTop: -16, // Half of pill height
+    marginTop: -16,
     zIndex: 10,
   },
   leftIndicator: {
@@ -841,13 +836,13 @@ const styles = StyleSheet.create({
     paddingVertical: SPACING.sm,
     borderRadius: 20,
     shadowColor: COLORS.shadow,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
+  },
+  distributionContainer: {
+    paddingHorizontal: SPACING.xs,
   },
   netValuesContainer: {
     paddingHorizontal: SPACING.xs,
@@ -866,13 +861,6 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     marginRight: SPACING.sm,
   },
-  netPercentageBadge: {
-    borderRadius: 20,
-    paddingHorizontal: SPACING.sm,
-    paddingVertical: SPACING.xxs,
-    minWidth: 50,
-    alignItems: 'center',
-  },
 });
 
-export default InvestmentSection;
+export default memo(InvestmentSection);

@@ -1,73 +1,115 @@
-import React, { useRef, useEffect } from 'react';
-import { View, StyleSheet, Animated } from 'react-native';
-import { COLORS, SPACING, BORDER_RADIUS } from '../../constants/theme';
+import React, { useEffect, memo, useMemo } from 'react';
+import { View, StyleSheet } from 'react-native';
+import Reanimated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withSequence,
+  runOnJS,
+} from 'react-native-reanimated';
+import { COLORS, SPACING } from '../../constants/theme';
 import Typography from '../common/Typography';
 
-const DistributionProgressBar = ({ 
-  stockPercentage = 63, 
-  mutualFundPercentage = 37, 
+const DistributionProgressBar = memo(({ 
+  stockPercentage = 30, 
+  mutualFundPercentage = 70, 
   activeTab = 'stocks' 
 }) => {
-  // Animated progress value
-  const progressAnim = useRef(new Animated.Value(0)).current;
+  // Reanimated values
+  const stockBarHeight = useSharedValue(8);
+  const mutualFundBarHeight = useSharedValue(8);
+  const percentageOpacity = useSharedValue(1);
+  const displayedPercentage = useSharedValue(stockPercentage);
   
+  // Calculate target values
+  const targetValues = useMemo(() => ({
+    stockHeight: activeTab === 'stocks' ? 12 : 6,
+    mutualFundHeight: activeTab === 'mutualFunds' ? 12 : 6,
+    percentage: activeTab === 'stocks' ? stockPercentage : mutualFundPercentage,
+  }), [activeTab, stockPercentage, mutualFundPercentage]);
+  
+  // Animated styles
+  const stockBarStyle = useAnimatedStyle(() => ({
+    height: stockBarHeight.value,
+    flex: stockPercentage / 100,
+    backgroundColor: activeTab === 'stocks' ? COLORS.stocks : COLORS.textTertiary,
+    borderRadius: activeTab === 'stocks' ? 3 : 1,
+  }));
+  
+  const mutualFundBarStyle = useAnimatedStyle(() => ({
+    height: mutualFundBarHeight.value,
+    flex: mutualFundPercentage / 100,
+    backgroundColor: activeTab === 'mutualFunds' ? COLORS.mutualFunds : COLORS.textTertiary,
+    borderRadius: activeTab === 'mutualFunds' ? 3 : 1,
+  }));
+  
+  const percentageContainerStyle = useAnimatedStyle(() => ({
+    opacity: percentageOpacity.value,
+  }));
+  
+  // Percentage text - using derived value for display
+  const percentageText = useMemo(() => 
+    Math.round(targetValues.percentage).toString() + '%',
+    [targetValues.percentage]
+  );
+  
+  // Animation effect
   useEffect(() => {
-    const targetProgress = activeTab === 'stocks' ? stockPercentage : mutualFundPercentage;
-    Animated.spring(progressAnim, {
-      toValue: targetProgress,
-      useNativeDriver: false,
-      damping: 20,
-      stiffness: 150,
-    }).start();
-  }, [activeTab, stockPercentage, mutualFundPercentage]);
+    'worklet';
+    
+    // Animate bar heights
+    stockBarHeight.value = withTiming(targetValues.stockHeight, { duration: 300 });
+    mutualFundBarHeight.value = withTiming(targetValues.mutualFundHeight, { duration: 300 });
+    
+    // Animate percentage with fade transition
+    percentageOpacity.value = withSequence(
+      withTiming(0, { duration: 150 }),
+      withTiming(1, { duration: 150 })
+    );
+    
+    // Update displayed percentage
+    displayedPercentage.value = targetValues.percentage;
+  }, [targetValues]);
   
   return (
-    <View style={styles.progressContainer}>
-      <View style={styles.progressBar}>
-        <Animated.View 
-          style={[
-            styles.progressFill,
-            { 
-              width: progressAnim.interpolate({
-                inputRange: [0, 100],
-                outputRange: ['0%', '100%'],
-              }),
-              backgroundColor: activeTab === 'stocks' ? COLORS.success : COLORS.investment,
-            }
-          ]} 
-        />
-      </View>
-      <View style={styles.progressLabels}>
-        <Typography variant="caption" color="textSecondary" weight="medium">
-          Stocks {stockPercentage}%
-        </Typography>
-        <Typography variant="caption" color="textSecondary" weight="medium">
-          MF {mutualFundPercentage}%
-        </Typography>
+    <View style={styles.container}>
+      <View style={styles.barsContainer}>
+        {/* Stock Holdings Bar */}
+        <Reanimated.View style={[styles.bar, stockBarStyle]} />
+        
+        {/* Percentage Display */}
+        <Reanimated.View style={[styles.percentageContainer, percentageContainerStyle]}>
+          <Typography variant="bodySmall" color="textPrimary" weight="bold">
+            {percentageText}
+          </Typography>
+        </Reanimated.View>
+        
+        {/* Mutual Funds Bar */}
+        <Reanimated.View style={[styles.bar, mutualFundBarStyle]} />
       </View>
     </View>
   );
-};
+});
+
+DistributionProgressBar.displayName = 'DistributionProgressBar';
 
 const styles = StyleSheet.create({
-  progressContainer: {
-    gap: SPACING.xs,
+  container: {
+    marginVertical: SPACING.xxs,
   },
-  progressBar: {
-    height: 8,
-    backgroundColor: COLORS.surfaceSecondary,
-    borderRadius: BORDER_RADIUS.full,
-    overflow: 'hidden',
-  },
-  progressFill: {
-    height: '100%',
-    borderRadius: BORDER_RADIUS.full,
-  },
-  progressLabels: {
+  barsContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    gap: SPACING.xxs,
+  },
+  bar: {
+    minHeight: 2,
+  },
+  percentageContainer: {
+    paddingHorizontal: SPACING.xxs,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
-export default DistributionProgressBar; 
+export default DistributionProgressBar;
